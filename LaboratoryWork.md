@@ -4,5 +4,5 @@ _Laboratory task 1_
 >russian codepage 866
 >Cyrillic output in console
 
-- task1
+- Тестовое задание (task1)
 - --------------------------------------------------------------------
