@@ -10,3 +10,8 @@
 
 ![console.png](pictures/Qt_5_7_1_Lab_1_rus_console.png "screen")
 
+>Параметр в Windows 10/Региональные настройки. Выставить флажок - будут русские символы в консоли (в моем случае получилось так).
+>Без проблем выводились в консоль русские символы в QDebug()
+
+![screen_system.png](pictures/screen_system.png)
+
