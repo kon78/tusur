@@ -1,18 +1,21 @@
 # Group_318//OOP_C++
-## Laboratory work
-_Laboratory task 1_
->russian codepage 866
->Cyrillic output in console
 
-- Тестовое задание (task1)
+- Test task.
 
+>_Laboratory test task._ Russian codepage 866. Cyrillic output in console
 >main.cpp task_1.pro
 
-## _Base task_
 
-- Task 1.
+## Laboratory work. Base task
+## Laboratory work 1.
 
+- Task 1. 
+
+>_Use of comments, preprocessor directives, debug and release modes._
 >main_task_2_1.cpp task_2_1.pro
 
+- Task 2.
+
+>_Using inference statements cout_
 
 - --------------------------------------------------------------------
