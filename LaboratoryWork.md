@@ -8,7 +8,7 @@ _Laboratory task 1_
 
 >main.cpp task_1.pro
 
-##_Base task_
+## _Base task_
 
 - Task 1.
 
