@@ -17,5 +17,6 @@
 - Task 2.
 
 >_Using inference statements cout_
+>main_rask_2_2.cpp task_2_2.pro
 
 - --------------------------------------------------------------------
