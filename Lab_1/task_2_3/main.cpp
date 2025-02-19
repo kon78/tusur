@@ -42,36 +42,41 @@ int main(int argc, char *argv[])
   while(true){
 
     if(CycleInputLogicSpeed == false){
-      cout << "Введите пройденное расстояние (в метрах): ";
-      cin.clear();//очищаем биты ошибок
-      cin >> SpeedMove;
-    }
+      while(true){
+        cout << "Введите пройденное расстояние (в метрах): ";
+        cin >> SpeedMove;
 
-    if(cin.good()){
-      cin.ignore(10,'\n');//не больше 10 символов и удалить разделитеь строк
-      CycleInputLogicSpeed=true;//если все хорошо
-    }else{
-      CycleInputLogicSpeed=false;//повторный ввод
-    }
+        if(cin.fail()){
+          cin.clear();
+          cin.ignore(32767,'\n');//не больше 10 символов и удалить разделитеь строк
+          //CycleInputLogicSpeed=false;//повторный ввод
+          cout << "\n!!!<<<Неправильный ввод данных. Некорректное данное.>>>!!!\n";
+        }else{
+          CycleInputLogicSpeed=true;//если все хорошо
+          break;//если все хорошо идем дальше
+        }
+         }//while
+      }//if
+
 
     if(CycleInputLogicTime == false){
       cout << "Введите затраченное время (в секундах): ";
-      cin.clear();//очищаем биты ошибок
+//      cin.clear();//очищаем биты ошибок
       cin >> TimeMove;
-    }
 
     if(cin.good()){
-      cin.ignore(10,'\n');
+      cin.ignore(32767,'\n');
       CycleInputLogicTime=true;//если все хорошо
     }else{
       CycleInputLogicTime=true;//повторный ввод
+      cout << "\n!!!<<<Неправильный ввод данных. Некорректное данное.>>>!!!\n";
+    }
     }
 
     if(CycleInputLogicSpeed & CycleInputLogicTime){
       break;
     }else{
       cin.clear();//очищаем биты ошибок
-      cout << "\n!!!<<<Неправильный ввод данных>>>!!!\n";
       cin.ignore(10,'\n');
     }
 
