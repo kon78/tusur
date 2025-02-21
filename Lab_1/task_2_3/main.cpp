@@ -4,95 +4,124 @@
 #include <iostream>//поточный модуль
 #include <stdio.h>
 #include <math.h>//для математики
+#include "task1.h"//"" для заголовочых файлов пользователя
+#include "task2.h"
+#include "task3.h"
+#include "enterdata.h"
 
-//используем пространство имен std, можно не писать запись std::count
+//используем пространство имен std, можно не писать запись std::cout
 using namespace std;
 
 //определения/назначения
-#define MainProgram true //может быть число 0,1 ...
+#define MainProgram true
+//#define TaskFirst true//задача 1
+//#define TaskTwo true//задача 2
+//#define TaskTree true//задача 3
 
 //основной блок/функция программы без аргументов
 int main(int argc, char *argv[])
 {//блок стейтменов начало
-
-  float SpeedMove, TimeMove, DistanceMove;//task 1
-
 #ifndef MainProgram
   QCoreApplication a(argc, argv);
 
   return a.exec();
 #endif
 
-#ifdef MainProgram
-//value PascalCase
+#ifndef TaskFirst
   cout << "Задача 1.\nВычисление скорости прямолиненйного движения.\n";
   cout << "(по расстоянию и времени.)\n";
   cout << endl;
+
 /*
- * используемые переменные SpeedMove TimeMove DistanceMove
- * DistanceMove=SpeedMove*TimeMove
- * тип данных float, проверка ввода на посторонние символы,
+ * используемые переменные Distance TimeMove SpeedMove
+ * Speed=Distance/Time
+ * тип данных float, проверка ввода
 */
+  Distance=0;TimeMove=0;SpeedMove=0;//обнуляемся
 
+  cout << "Введите расстояние (м) :";
+  Distance = EnterData();//первая переменная
 
-  bool CycleInputLogicSpeed = false;
-  bool CycleInputLogicTime = false;
+  cout << "Введите время (с) :";
+  TimeMove = EnterData();//вторая переменная
 
-  //цикл для ввода данных пользователем
-  while(true){
-
-    if(CycleInputLogicSpeed == false){
-      while(true){
-        cout << "Введите пройденное расстояние (в метрах): ";
-        cin >> SpeedMove;
-
-        if(cin.fail()){
-          cin.clear();
-          cin.ignore(32767,'\n');//не больше 10 символов и удалить разделитеь строк
-          //CycleInputLogicSpeed=false;//повторный ввод
-          cout << "\n!!!<<<Неправильный ввод данных. Некорректное данное.>>>!!!\n";
-        }else{
-          CycleInputLogicSpeed=true;//если все хорошо
-          break;//если все хорошо идем дальше
-        }
-         }//while
-      }//if
-
-
-    if(CycleInputLogicTime == false){
-      cout << "Введите затраченное время (в секундах): ";
-//      cin.clear();//очищаем биты ошибок
-      cin >> TimeMove;
-
-    if(cin.good()){
-      cin.ignore(32767,'\n');
-      CycleInputLogicTime=true;//если все хорошо
-    }else{
-      CycleInputLogicTime=true;//повторный ввод
-      cout << "\n!!!<<<Неправильный ввод данных. Некорректное данное.>>>!!!\n";
-    }
-    }
-
-    if(CycleInputLogicSpeed & CycleInputLogicTime){
-      break;
-    }else{
-      cin.clear();//очищаем биты ошибок
-      cin.ignore(10,'\n');
-    }
-
-
-    //scanf("5%f",&SpeedMove);//%f-float
-    //scanf("5%f",&TimeMove);//%f-float
+  //если вторая переменная не нуль, делаем расчет
+  if(TimeMove != 0){
+    SpeedMove = Distance / TimeMove;
+  }else{
+    cout << "На нуль не делим!\n";
+    exit(-1);//выход из программы с ошибкой
   }
-  //пока не будут введены корректные данные
 
-  DistanceMove = SpeedMove * TimeMove;
-
-//если при вводе не было ошибок,
+//и выводим результат
   cout << "Задача 1.\n";
-  cout << "Были введены следующие данные, скорость: " << SpeedMove << " (м) время: " << TimeMove << " (с)\n";
-  cout << "Результат: " << DistanceMove << " м/с";
+  cout << "Были введены следующие данные, дистанция: " << Distance << " (м) время: " << TimeMove << " (с)\n";
+  cout.setf(ios::fixed);cout.precision(3);//точность до 3 знаков после запятой
+  cout << "Результат: " << SpeedMove << " м/с";
   cout << endl;
 #endif
+/**************************************************************************************************************/
 
+#ifndef TaskTwo
+  cout << "\nЗадача 2.\nВычислить ускорение (по начальной скорости, конечной скорости и времени).\n";
+  cout << endl;
+  /*
+   * используемые переменные SpeedPoint1, SpeedPoint2, TimePoint1, TimePoint2, AccelerationAll
+   * AccelerationAll = (SpeedPoint2-SpeedPoint1)/(TimePoint2-TimePoint1)
+   * тип данных float, проверка ввода
+  */
+
+  //обнуляемся
+  SpeedPoint1=0;SpeedPoint2=0;TimePoint1=0;TimePoint2=0;
+  SpeedPoint1 = EnterData();//первая переменная
+  SpeedPoint2 = EnterData();
+  TimePoint1 = EnterData();
+  TimePoint2 = EnterData();//четвертая переменная
+
+  //если знаменатель не нуль, делаем расчет
+  if(TimePoint2 != TimePoint1){
+    AccelerationAll = (SpeedPoint2-SpeedPoint1)/(TimePoint2-TimePoint1);
+  }else{
+    cout << "На нуль не делим!\n";
+    exit(-1);//выход из программы с ошибкой
+  }
+
+  //и выводим результат
+    cout << "Задача 2.\n";
+    cout << "Были введены следующие данные\nначальная скорость " << SpeedPoint1 << " (м/с)\n"
+         << "конечная скорость " << SpeedPoint2 << " (м/с)\n"
+         << "начальное время " << TimePoint1 << " (c)\n"
+         << "конечное время " << TimePoint2 << " (c)\n";
+
+    cout << "Результат: " << AccelerationAll << " ускорение м2/с ";
+    if(AccelerationAll < 0){
+      cout << "Торможение!\n";
+    }else{
+      cout << "Разгон!\n";
+    }
+    cout << endl;
+#endif
+/**************************************************************************************************************/
+#ifndef TaskTree
+  cout << "\nЗадача 3.\nВычислить радиус круга (по длине его окружности)\n";
+  cout << endl;
+  /* используемые переменные CircleSquare CircleLong CircleRadius
+   * <<R=L/(2*Pi)>>
+   * тип данных float, проверка ввода
+  */
+
+  //обнуляемся
+  CircleSquare=0; CircleLong=0; CircleRadius=0;
+  CircleLong = EnterData();//длина круга
+  CircleRadius = CircleLong / (2 * PiConst);
+
+  //и выводим результат
+    cout << "Задача 3.\n";
+    cout << "Были введены следующие данные\nдлина окружности " << CircleLong << " (м)\n";
+  cout.setf(ios::fixed);cout.precision(6);//точность до 6 знаков после запятой
+  cout << "Результат: " << CircleRadius << "(радиус) м " << " площадь круга "
+       << (PiConst * (CircleRadius*CircleRadius)) << " (м2)\n";
+#endif
+
+  return 0;
 }//блок стейтменов окончание
