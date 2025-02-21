@@ -19,4 +19,8 @@
 >_Using inference statements cout_
 >main_rask_2_2.cpp task_2_2.pro
 
+- Task 3.
+
+>_Using the input and output operator. Input control_
+>main.cpp enterdata.cpp enterdata.h task1.h task2.h task3.h task_2_3.pro
 - --------------------------------------------------------------------
