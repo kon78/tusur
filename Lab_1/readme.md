@@ -15,3 +15,18 @@
 
 ![screen_system.png](pictures/screen_system.png)
 
+## _Задание 1_
+
+Скрин экрана к 1 заданию.
+
+>Использование комментариев в программе, директив с комментариями
+
+![Qt_5_7_1_task_2_1_main_screen.png](pictures/Qt_5_7_1_task_2_1_main_screen.png)
+
+## _Задание 2_
+
+Скрин экрана к 2 заданию.
+
+>Использование форматированного оператора вывода std::cout
+
+![Qt_5_7_1_task_2_2_main_screen.png](pictures/Qt_5_7_1_task_2_2_main_screen.png)
