@@ -30,3 +30,11 @@
 >Использование форматированного оператора вывода std::cout
 
 ![Qt_5_7_1_task_2_2_main_screen.png](pictures/Qt_5_7_1_task_2_2_main_screen.png)
+
+## _Задание 3_
+
+Скрин экрана к 3 заданию.
+
+>Использование оператора ввода std::cin и вывода std::cout, контроль ввода.
+
+![Qt_5_7_1_Lab_1_task3_screen.png](pictures/Qt_5_7_1_Lab_1_task3_screen.png)
