@@ -1,16 +1,26 @@
+# +подключаем -не подключаем модули
+# core gui - модули qt
 QT += core
 QT -= gui
 
+# стандарт языка, год принятия
 CONFIG += c++11
 
+# цель сборки
 TARGET = Lab_1
+# в консоли
 CONFIG += console
+# - mac
 CONFIG -= app_bundle
 
+# шаблон
 TEMPLATE = app
 
+# файлы из которых строится приложение
 SOURCES += main.cpp
 
+#  (макросы)
+# сообщения от компилятора при сборке приложения, можно выключить, сейчас включены
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
