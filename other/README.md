@@ -96,11 +96,12 @@ tree Test
 ### ipconfig
 
 >Работа с сетевыми утилитами в консоли.
+>ipconfig Вывод информации о сетевом оборудовании.
 
 ![screen_17_ipconfig.png](pictures/screen_17_ipconfig.png)
 
 ```bash
-ipconfig > homenet.txt
+ipconfig > homenet.txt #запись в файл homenet.txt
 ```
 
 ```bash
@@ -116,6 +117,8 @@ ipconfig > homenet.txt
 ```
 
 ### ping
+
+>Ping - доступность сетевого адреса
 
 ```bash
 ping <IPv4-address> #ip host
@@ -202,6 +205,8 @@ ping www.ya.ru -n 21
 
 ### tracert
 
+>tracert определяет путь, по которому проходят пакеты между локальным и удалённым устройствами.
+
 ```bash
 tracert www.rsue.ru
 
@@ -251,6 +256,7 @@ tracert ww.ya.ru
 #Trace complete.
 ```
 
+>В 6 пункте превышено время или нет отклика
 >Все IP адреса до any.yandex.ru (213.180.204.242)
 
 hop  |  IP
@@ -278,9 +284,11 @@ tracert -d ww.ya.ru
 #  5     5 ms     6 ms     6 ms  94.25.40.122
 #  6     *        *        *     Request timed out.
 #  7    19 ms    20 ms    20 ms  213.180.204.242
+#
+#Trace complete.
 ```
-Trace complete.
 
+>В 6 пункте превышено время или нет отклика
 >Все IP адреса до any.yandex.ru (213.180.204.242) без DNS
 
 hop  |  IP
@@ -292,9 +300,9 @@ hop  |  IP
 5    | 94.25.40.122
 6    | 213.180.204.242
 
->В 6 пункте превышено время или нет отклика
+### arp
 
-### arp.
+>arp служит для вывода и изменения записей кэша протокола ARP.
 
 ```bash
 arp -a -N 1XX.1XX.XX.XX #отображение таблицы ARP на интерфейсе
