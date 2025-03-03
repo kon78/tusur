@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 
 #endif
 
-#if 1
+#if 0 //Задание 3
 //директивы препроцессору
 #include <iostream>//поточный модуль
 #include <stdio.h>
