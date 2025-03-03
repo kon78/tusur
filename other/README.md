@@ -101,14 +101,15 @@ tree Test
 ipconfig > homenet.txt
 ```
 
-Wireless LAN adapter Беспроводная сеть:                                   #действующее соединение, беспроводное сетевое соединение
-Description . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8260   #адаптер
-Physical Address. . . . . . . . . : 5X-0X-DX-4X-6X-6X                     #MAC адрес
-Link-local IPv6 Address . . . . . : fXX0::cXXc:1XX0:cXXa:1XX0%1X          #сетевой адрес IPv6, IPv4
-IPv4 Address. . . . . . . . . . . : 1XX.1XX.X.X(Preferred)                #IPv4
-Subnet Mask . . . . . . . . . . . : 2XX.2XX.2XX.Y                         #маска
-Default Gateway . . . . . . . . . : 1XX.1XX.XX.XX                           #основной шлюз
-DNS Servers . . . . . . . . . . . : 1XX.1XX.XX.XX                           #DNS Server
-DHCP Server . . . . . . . . . . . : 1XX.1XX.XX.XX                           #DHCP
-
+```bash
+#Wireless LAN adapter Беспроводная сеть:                                   #действующее соединение, беспроводное сетевое соединение
+#Description . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8260   #адаптер
+#Physical Address. . . . . . . . . : 5X-0X-DX-4X-6X-6X                     #MAC адрес
+#Link-local IPv6 Address . . . . . : fXX0::cXXc:1XX0:cXXa:1XX0%1X          #сетевой адрес IPv6, IPv4
+#IPv4 Address. . . . . . . . . . . : 1XX.1XX.X.X(Preferred)                #IPv4
+#Subnet Mask . . . . . . . . . . . : 2XX.2XX.2XX.Y                         #маска
+#Default Gateway . . . . . . . . . : 1XX.1XX.XX.XX                         #основной шлюз
+#DNS Servers . . . . . . . . . . . : 1XX.1XX.XX.XX                         #DNS Server
+#DHCP Server . . . . . . . . . . . : 1XX.1XX.XX.XX                         #DHCP
+```
 
