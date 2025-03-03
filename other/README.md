@@ -88,3 +88,17 @@ rd /s Dog
 rd /s Bird
 tree Test
 ```
+
+------------------------------------------------------------------------------------------
+
+## Утилиты ipconfig, ping, tracert, arp
+
+>Работа с сетевыми утилитами в консоли.
+
+![screen_17_ipconfig.png](pictures/screen_17_ipconfig.png)
+
+```bash
+ipconfig > homenet.txt
+```
+
+
