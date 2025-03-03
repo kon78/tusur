@@ -121,9 +121,9 @@ ping www.ya.ru -n 21
 
 ![screen_18_ping.png](pictures/screen_18_ping.png)
 
->Среднее время "пингования" адресов
+>Среднее время "пингования" адресов 0 ms, потери 0% 
 ```bash
-ping <IPv4 host> - 0 ms
+ping <IPv4 host>
 ```
 
 
@@ -157,9 +157,9 @@ ping <IPv4 host> - 0 ms
 #     Minimum = 2ms, Maximum = 28ms, Average = 6ms
 ```
 
->Среднее время "пингования" DNS
+>Среднее время "пингования" DNS 4 ms, потери 0%
 ```bash
-ping <IPv4 DNS> - 4 ms
+ping <IPv4 DNS>
 ```
 
 ```bash
@@ -192,7 +192,38 @@ ping <IPv4 DNS> - 4 ms
 #     Minimum = 16ms, Maximum = 988ms, Average = 207ms
 ```
 
->Среднее время "пингования" www.ya.ru
+>Среднее время "пингования" www.ya.ru 207 ms, потери 4%
 ```bash
-ping www.ya.ru -n 21 -  207 ms
+ping www.ya.ru -n 21
 ```
+
+```bash
+tracert www.rsue.ru
+
+#Tracing route to www.rsue.ru [77.95.89.230]
+#over a maximum of 30 hops:
+#
+#  1     1 ms     1 ms     1 ms  RT-GM-3 [1XX.1XX.X.X]
+#  2   169 ms    25 ms     *     spbr-bras33.sz.ip.rostelecom.ru [212.48.195.244]
+#  3     6 ms     6 ms     6 ms  xe-2-0-3-10g.t1600-2-mmt.nwtelecom.ru [212.48.194.134]
+#  4     7 ms     8 ms     9 ms  185.140.148.19
+#  5    47 ms    50 ms    42 ms  95.167.212.166
+#  6    51 ms    55 ms    54 ms  pe04.Rostov.gldn.net [79.104.233.203]
+#  7    51 ms    51 ms    51 ms  Speklis-lgw.Rostov.gldn.net [195.239.127.226]
+#  8    51 ms    50 ms    56 ms  77.95.89.230
+#
+```
+
+>Все IP адреса до www.rsue.ru (77.95.89.230)
+
+hop  |  IP
+-----|----------------
+1    | 1XX.1XX.X.X DNS
+2    | 212.48.195.244
+3    | 212.48.194.134
+4    | 185.140.148.19
+5    | 95.167.212.166
+6    | 79.104.233.203
+7    | 195.239.127.226
+8    | 77.95.89.230
+
