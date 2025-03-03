@@ -40,3 +40,17 @@ move Cat\oneFile.txt oneFile.txt
 type oneFile.txt
 dir
 ```
+
+>Переименование файлов и расширений командой rename.
+
+![screen_8_rename.png](pictures/screen_8_rename.png)
+![screen_9_rename_dir.png](pictures/screen_9_rename_dir.png)
+
+```bash
+rename oneFile.txt newFile.txt
+cd Cat
+rename *.txt *.cmd
+dir
+dir Cat
+```
+
