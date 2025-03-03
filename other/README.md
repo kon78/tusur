@@ -62,7 +62,7 @@ rename *.cmd *.txt
 
 ![screen_11_md_dog_tree.png](pictures/screen_11_md_dog_tree.png)
 ![screen_12_md_bird.png](pictures/screen_12_md_bird.png)
-
+![screen_13_tree_test.png](pictures/screen_13_tree_test.png)
 ```bash
 md Dog\Bulldog
 md Dog\Sheltie
@@ -72,4 +72,5 @@ md Bird\Non-flying
 cd Bird\Non-flying
 md Ostrich
 md Penguin
+tree Test
 ```
