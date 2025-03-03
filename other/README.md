@@ -121,6 +121,12 @@ ping www.ya.ru -n 21
 
 ![screen_18_ping.png](pictures/screen_18_ping.png)
 
+>Среднее время "пингования" адресов
+```bash
+ping <IPv4 host> - 0 ms
+```
+
+
 ```bash
 # Pinging 1XX.1YY.Z.Z with 32 bytes of data:
 # Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
@@ -149,6 +155,11 @@ ping www.ya.ru -n 21
 #     Packets: Sent = 21, Received = 21, Lost = 0 (0% loss),
 # Approximate round trip times in milli-seconds:
 #     Minimum = 2ms, Maximum = 28ms, Average = 6ms
+```
+
+>Среднее время "пингования" DNS
+```bash
+ping <IPv4 DNS> - 4 ms
 ```
 
 ```bash
@@ -181,8 +192,7 @@ ping www.ya.ru -n 21
 #     Minimum = 16ms, Maximum = 988ms, Average = 207ms
 ```
 
->Среднее время "пингования" адресов
+>Среднее время "пингования" www.ya.ru
 ```bash
-ping <IPv4 host> - 0 ms
-ping <IPv4 DNS> - 4 ms
+ping www.ya.ru -n 21 -  207 ms
 ```
