@@ -181,7 +181,8 @@ ping www.ya.ru -n 21
 #     Minimum = 16ms, Maximum = 988ms, Average = 207ms
 ```
 
-Среднее время "пингования" адресов
+>Среднее время "пингования" адресов
+```bash
 ping <IPv4 host> - 0 ms
 ping <IPv4 DNS> - 4 ms
-
+```
