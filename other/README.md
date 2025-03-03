@@ -17,3 +17,11 @@ time
 
 ![screen_3_folder_test.png](pictures/screen_3_folder_test.png)
 
+>Создание файла в консоли, редактирование и запись. Для завершения редактирования ctrl+z.
+
+![screen_4_copycon.png](pictures/screen_4_copycon.png)
+
+```bash
+copy con File.txt
+dir
+```
