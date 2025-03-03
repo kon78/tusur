@@ -266,17 +266,19 @@ hop  |  IP
 tracert -d ww.ya.ru
 ```
 
-Tracing route to any.yandex.ru [213.180.204.242]
-over a maximum of 30 hops:
-
-  1     3 ms     6 ms     5 ms  1XX.1XX.XX.XX
-  2     4 ms     5 ms     4 ms  212.48.195.244
-  3    12 ms     6 ms     6 ms  212.48.194.134
-  4     5 ms     6 ms     5 ms  217.107.120.177
-  5     5 ms     6 ms     6 ms  94.25.40.122
-  6     *        *        *     Request timed out.
-  7    19 ms    20 ms    20 ms  213.180.204.242
-
+```
+#Tracing route to any.yandex.ru [213.180.204.242]
+#over a maximum of 30 hops:
+#
+#
+#  1     3 ms     6 ms     5 ms  1XX.1XX.XX.XX
+#  2     4 ms     5 ms     4 ms  212.48.195.244
+#  3    12 ms     6 ms     6 ms  212.48.194.134
+#  4     5 ms     6 ms     5 ms  217.107.120.177
+#  5     5 ms     6 ms     6 ms  94.25.40.122
+#  6     *        *        *     Request timed out.
+#  7    19 ms    20 ms    20 ms  213.180.204.242
+```
 Trace complete.
 
 >Все IP адреса до any.yandex.ru (213.180.204.242) без DNS
