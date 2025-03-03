@@ -93,6 +93,8 @@ tree Test
 
 ## Утилиты ipconfig, ping, tracert, arp
 
+### ipconfig
+
 >Работа с сетевыми утилитами в консоли.
 
 ![screen_17_ipconfig.png](pictures/screen_17_ipconfig.png)
@@ -113,6 +115,8 @@ ipconfig > homenet.txt
 #DHCP Server . . . . . . . . . . . : 1XX.1XX.XX.XX                         #DHCP
 ```
 
+### ping
+
 ```bash
 ping <IPv4-address> #ip host
 ping <IPv4-address> -n 21 #16 последняя цифра из имени ПК DESKTOP-HNV16 + 5, ip dns
@@ -125,7 +129,6 @@ ping www.ya.ru -n 21
 ```bash
 ping <IPv4 host>
 ```
-
 
 ```bash
 # Pinging 1XX.1YY.Z.Z with 32 bytes of data:
@@ -197,6 +200,8 @@ ping <IPv4 DNS>
 ping www.ya.ru -n 21
 ```
 
+### tracert
+
 ```bash
 tracert www.rsue.ru
 
@@ -227,3 +232,62 @@ hop  |  IP
 7    | 195.239.127.226
 8    | 77.95.89.230
 
+```bash
+tracert ww.ya.ru
+```
+
+```
+#Tracing route to any.yandex.ru [213.180.204.242]
+#over a maximum of 30 hops:
+#
+#  1     3 ms     1 ms     1 ms  RT-GM-3 [1XX.1XX.XX.XX]
+#  2    89 ms     5 ms     6 ms  spbr-bras33.sz.ip.rostelecom.ru [212.48.195.244]
+#  3     6 ms     5 ms    10 ms  xe-2-0-3-10g.t1600-2-mmt.nwtelecom.ru [212.48.194.134]
+#  4     7 ms     8 ms     5 ms  217.107.120.177
+#  5    15 ms     5 ms     5 ms  94.25.40.122
+#  6     *        *        *     Request timed out.
+#  7    20 ms    20 ms    23 ms  any.yandex.ru [213.180.204.242]
+#
+#Trace complete.
+```
+
+>Все IP адреса до any.yandex.ru (213.180.204.242)
+
+hop  |  IP
+-----|----------------
+1    | 1XX.1XX.X.X DNS
+2    | 212.48.195.244
+3    | 212.48.194.134
+4    | 217.107.120.177
+5    | 94.25.40.122
+6    | 213.180.204.242
+
+```bash
+tracert -d ww.ya.ru
+```
+
+Tracing route to any.yandex.ru [213.180.204.242]
+over a maximum of 30 hops:
+
+  1     3 ms     6 ms     5 ms  1XX.1XX.XX.XX
+  2     4 ms     5 ms     4 ms  212.48.195.244
+  3    12 ms     6 ms     6 ms  212.48.194.134
+  4     5 ms     6 ms     5 ms  217.107.120.177
+  5     5 ms     6 ms     6 ms  94.25.40.122
+  6     *        *        *     Request timed out.
+  7    19 ms    20 ms    20 ms  213.180.204.242
+
+Trace complete.
+
+>Все IP адреса до any.yandex.ru (213.180.204.242) без DNS
+
+hop  |  IP
+-----|----------------
+1    | 1XX.1XX.X.X DNS
+2    | 212.48.195.244
+3    | 212.48.194.134
+4    | 217.107.120.177
+5    | 94.25.40.122
+6    | 213.180.204.242
+
+>В 6 пункте превышено время или нет отклика
