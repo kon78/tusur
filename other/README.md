@@ -52,5 +52,8 @@ cd Cat
 rename *.txt *.cmd
 dir
 dir Cat
+rename newFile.txt oneFile.txt
+cd Cat
+rename *.cmd *.txt
 ```
 
