@@ -25,3 +25,15 @@ time
 copy con File.txt
 dir
 ```
+
+>Копирование файла File.txt в каталог Cat с именами File1.txt File2.txt. Объединение скопрированных файлов File1.txt и File2.txt в oneFile.txt
+
+![screen_5_copy_files.png](pictures/screen_5_copy_files.png)
+![screen_6_copy_files_dir.png](pictures/screen_6_copy_files_dir.png)
+
+```bash
+copy File.txt Cat\File1.txt
+copy File.txt Cat\File2.txt
+copy Cat\File1.txt+Cat\File2.txt oneFile.txt
+dir
+```
