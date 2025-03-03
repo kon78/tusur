@@ -45,6 +45,7 @@ dir
 
 ![screen_8_rename.png](pictures/screen_8_rename.png)
 ![screen_9_rename_dir.png](pictures/screen_9_rename_dir.png)
+![screen_10_rename_back.png](pictures/screen_10_rename_back.png)
 
 ```bash
 rename oneFile.txt newFile.txt
@@ -52,5 +53,8 @@ cd Cat
 rename *.txt *.cmd
 dir
 dir Cat
+rename newFile.txt oneFile.txt
+cd Cat
+rename *.cmd *.txt
 ```
 
