@@ -63,6 +63,7 @@ rename *.cmd *.txt
 ![screen_11_md_dog_tree.png](pictures/screen_11_md_dog_tree.png)
 ![screen_12_md_bird.png](pictures/screen_12_md_bird.png)
 ![screen_13_tree_test.png](pictures/screen_13_tree_test.png)
+
 ```bash
 md Dog\Bulldog
 md Dog\Sheltie
@@ -72,5 +73,18 @@ md Bird\Non-flying
 cd Bird\Non-flying
 md Ostrich
 md Penguin
+tree Test
+```
+
+>Удаление файлов командой del и удаление каталогов командой rd.
+
+![screen_14_del_files.png](pictures/screen_14_del_files.png)
+![screen_15_del_folders.png](pictures/screen_15_del_folders.png)
+![screen_16_tree.png](pictures/screen_16_tree.png)
+
+```bash
+del Cat\*.*
+rd /s Dog
+rd /s Bird
 tree Test
 ```
