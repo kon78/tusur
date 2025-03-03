@@ -293,3 +293,74 @@ hop  |  IP
 6    | 213.180.204.242
 
 >В 6 пункте превышено время или нет отклика
+
+### arp.
+
+```bash
+arp -a -N 1XX.1XX.XX.XX #отображение таблицы ARP на интерфейсе
+```
+
+```
+Interface: 1XX.1XX.XX.XX --- 0xb
+  Internet Address      Physical Address      Type
+  1XX.1XX.XX.XX           1X-aX-bX-fX-8X-dX     dynamic
+  192.168.0.255         ff-ff-ff-ff-ff-ff     static
+  224.0.0.2             01-00-5e-00-00-02     static
+  224.0.0.22            01-00-5e-00-00-16     static
+  224.0.0.251           01-00-5e-00-00-fb     static
+  224.0.0.252           01-00-5e-00-00-fc     static
+  239.255.255.250       01-00-5e-7f-ff-fa     static
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static
+```
+
+IP              | MAC
+----------------|-------------------
+1XX.1XX.XX.XX   | 1X-aX-bX-fX-8X-dX
+192.168.0.255   | ff-ff-ff-ff-ff-ff
+224.0.0.2       | 01-00-5e-00-00-02
+224.0.0.22      | 01-00-5e-00-00-16
+224.0.0.251     | 01-00-5e-00-00-fb
+224.0.0.252     | 01-00-5e-00-00-fc
+239.255.255.250 | 01-00-5e-7f-ff-fa
+255.255.255.255 | ff-ff-ff-ff-ff-ff
+
+```bash
+arp -a -N 169.254.1.1
+```
+
+```
+Interface: 169.254.1.1 --- 0x1c
+  Internet Address      Physical Address      Type
+  169.254.1.10          00-e0-4c-08-77-f3     dynamic
+  169.254.1.255         ff-ff-ff-ff-ff-ff     static
+  224.0.0.2             01-00-5e-00-00-02     static
+  224.0.0.22            01-00-5e-00-00-16     static
+  224.0.0.251           01-00-5e-00-00-fb     static
+  224.0.0.252           01-00-5e-00-00-fc     static
+  239.255.255.250       01-00-5e-7f-ff-fa     static
+```
+
+IP              | MAC
+----------------|-------------------
+169.254.1.10    | 00-e0-4c-08-77-f3
+169.254.1.255   | ff-ff-ff-ff-ff-ff
+224.0.0.2       | 01-00-5e-00-00-02
+224.0.0.22      | 01-00-5e-00-00-16
+224.0.0.251     | 01-00-5e-00-00-fb
+224.0.0.252     | 01-00-5e-00-00-fc
+239.255.255.250 | 01-00-5e-7f-ff-fa
+
+```bash
+arp -a 1XX.1XX.XX.XX
+```
+
+```
+Interface: 1XX.1XX.XX.XX --- 0xb
+  Internet Address      Physical Address      Type
+  1XX.1XX.XX.XX           1X-aX-bX-fX-8X-dX     dynamic
+```
+
+```bash
+arp -d * #полная очистка таблицы
+arp -d <192.XXX.X.X> <192.XXX.X.Y> #удаление записи из таблицы для ip-адреса 192.XXX.X.X на сетевом интерфейсе 192.XXX.X.Y
+```
