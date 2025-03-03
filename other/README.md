@@ -101,4 +101,83 @@ tree Test
 ipconfig > homenet.txt
 ```
 
+```bash
+#Wireless LAN adapter Беспроводная сеть:                                   #действующее соединение, беспроводное сетевое соединение
+#Description . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8260   #адаптер
+#Physical Address. . . . . . . . . : 5X-0X-DX-4X-6X-6X                     #MAC адрес
+#Link-local IPv6 Address . . . . . : fXX0::cXXc:1XX0:cXXa:1XX0%1X          #сетевой адрес IPv6, IPv4
+#IPv4 Address. . . . . . . . . . . : 1XX.1XX.X.X(Preferred)                #IPv4
+#Subnet Mask . . . . . . . . . . . : 2XX.2XX.2XX.Y                         #маска
+#Default Gateway . . . . . . . . . : 1XX.1XX.XX.XX                         #основной шлюз
+#DNS Servers . . . . . . . . . . . : 1XX.1XX.XX.XX                         #DNS Server
+#DHCP Server . . . . . . . . . . . : 1XX.1XX.XX.XX                         #DHCP
+```
+
+```bash
+ping <IPv4-address> #ip host
+ping <IPv4-address> -n 21 #16 последняя цифра из имени ПК DESKTOP-HNV16 + 5, ip dns
+ping www.ya.ru -n 21
+```
+
+![screen_18_ping.png](pictures/screen_18_ping.png)
+
+```bash
+# Pinging 1XX.1YY.Z.Z with 32 bytes of data:
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=28ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=17ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=6ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=18ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=11ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=10ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=9ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=5ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=2ms TTL=64
+# Reply from 1XX.1YY.Z.Z: bytes=32 time=3ms TTL=64
+
+# Ping statistics for 1XX.1YY.Z.Z:
+#     Packets: Sent = 21, Received = 21, Lost = 0 (0% loss),
+# Approximate round trip times in milli-seconds:
+#     Minimum = 2ms, Maximum = 28ms, Average = 6ms
+```
+
+```bash
+# Pinging ya.ru [77.88.44.242] with 32 bytes of data:
+# Reply from 77.88.44.242: bytes=32 time=988ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=345ms TTL=58
+# Request timed out.
+# Reply from 77.88.44.242: bytes=32 time=224ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=17ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=49ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=84ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=16ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=36ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=229ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=19ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=83ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=691ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=156ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=17ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=64ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=74ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=129ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=386ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=312ms TTL=58
+# Reply from 77.88.44.242: bytes=32 time=238ms TTL=58
+
+# Ping statistics for 77.88.44.242:
+#     Packets: Sent = 21, Received = 20, Lost = 1 (4% loss),
+# Approximate round trip times in milli-seconds:
+#     Minimum = 16ms, Maximum = 988ms, Average = 207ms
+```
 
