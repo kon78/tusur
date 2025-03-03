@@ -58,3 +58,18 @@ cd Cat
 rename *.cmd *.txt
 ```
 
+>Создание каталогов и подкаталогов. Команда tree для отображения дерева каталогов.
+
+![screen_11_md_dog_tree.png](pictures/screen_11_md_dog_tree.png)
+![screen_12_md_bird.png](pictures/screen_12_md_bird.png)
+
+```bash
+md Dog\Bulldog
+md Dog\Sheltie
+tree Dog
+md Bird\Flying
+md Bird\Non-flying
+cd Bird\Non-flying
+md Ostrich
+md Penguin
+```
