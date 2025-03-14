@@ -1,6 +1,6 @@
 //TODO git ветка lab2, слить с веткой master!!!! LOCALE?
 //TODO округление весов до целых наверно
-
+//TODO binprintf(...) наверное можно убрать
 /*
 * Лабораторная работа No2
 * Исследование ввода-вывода типов данных стандартной библиотеки С++
@@ -8,19 +8,17 @@
 * Developer: Половян КА 318OOP/C++
 * Windows 10, LOCALE 866
 */
-#if 1
 #include <iostream>// подключаем библиотеку ввода/вывода
 #include <task1.cpp>
-
-//Задание 1.“Калькулятор для расчета идеального веса“.
 
 using namespace  std;
 int main(int argc, char *argv[])
 {
+//Задание 1.“Калькулятор для расчета идеального веса“.
+#if 0
 
 //используемые переменные camelCase
-
-  cout << "Программа Калькулятор для расчета идеального веса.\n";
+  bunnerTask1();
   cout << "Для расчета пользователю необходимо ввести следующие данные:\n";
   cout << "\nвозвраст пациента, полных лет: ";
   cin >> patOldYears;
@@ -66,16 +64,17 @@ int main(int argc, char *argv[])
 //расчеты общий расчет по имеющимся данным
   if(algProg == 'a'){
     ((patSex)?brokCoef = 0.9:brokCoef = 0.89);//male female
+    //расчет по формуле Брока
     patMassAlg = patMassBroke();
     answer();
     answerBroke(patMassAlg,patMass);//ответ на экран
-  /*
-   * вес по индексу массы тела
-   * индекс = вес, кг/(рост, м)2
-   * вес,кг = индекс * рост,м2
-  */
 
   }else if(algProg == 'b'){
+    /*
+     * вес по индексу массы тела
+     * индекс = вес, кг/(рост, м)2
+     * вес,кг = индекс * рост,м2
+    */
     if(patHigh != 0){//проверка на 0, на всякий случай
       indPatHigh = (float)patHigh / 100;//перевод в метры
       index = (float)patMass / (indPatHigh * indPatHigh);
@@ -84,11 +83,10 @@ int main(int argc, char *argv[])
     }else{
       cout << "Рост пациента не может быть нулевым!\n";
     }
+  }else if(algProg == 'c'){
     /*
      * вес по индексу массы тела и возрасту
     */
-  }else if(algProg == 'c'){
-      cout << "algorithm c" << endl;
     selYears(patSex,patOldYears);//индекс в зависимости от возраста и пола пациента
     answer();
     answerIndMassOldYear(indexOldYears);
@@ -106,6 +104,26 @@ int main(int argc, char *argv[])
 //}
 
   }
+#endif
+
+//Задание 2. Вывод основных размеров типов даных С++.
+
+#if 1
+//char
+  char byte='A';
+  cout << "char:" << sizeof(char) << " bytes" << endl;
+
+//integer
+//TODO разбить int на 2
+  cout << "int:" << sizeof(int) << " bytes" << endl;
+  cout << "bool:" << sizeof(bool) << " byte" << endl;
+  cout << "double:" << sizeof(double) << " bytes" << endl;
+  cout << "float:" << sizeof(float) << " bytes" << endl;
+  cout << "long:" << sizeof(long long) << " bytes" << endl;
+  cout << "unsigned int:" << sizeof(unsigned int) << " bytes" << endl;
+  cout << "unsigned :" << sizeof(unsigned int) << " bytes" << endl;
+
+#endif
   return 0;
 }
-#endif 1
+
