@@ -3,7 +3,7 @@
 //функции
 void bunnerTask1();
 
-//переменные
+//используемые переменные camelCase
 int patOldYears;//возвраст пациента
 int patMass;//вес пациента
 int patMassAlg;//вес пациента по расчету
@@ -19,7 +19,7 @@ float indexOldYears;
 
 //макросы \
   чем больше скобок, тем лучше, \
-                           int       const       float
+                            int      const      float
 #define patMassBroke() (((patHigh) - (100)) * (brokCoef))
 #define viewBroke() (cout<<"масса пациента "<<(patMass)<<" масса по Броку "<<(patMassAlg)<<endl)
   //вывод результатов

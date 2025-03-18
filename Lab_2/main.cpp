@@ -1,15 +1,18 @@
 //TODO git ветка lab2, слить с веткой master!!!! LOCALE?
 //TODO округление весов до целых наверно
 //TODO binprintf(...) наверное можно убрать
+
 /*
 * Лабораторная работа No2
 * Исследование ввода-вывода типов данных стандартной библиотеки С++
-* Типы данных
+*
 * Developer: Половян КА 318OOP/C++
-* Windows 10, LOCALE 866
+* OS: Windows 10
+* locale (кодировка): UTF-8
 */
 #include <iostream>// подключаем библиотеку ввода/вывода
-#include <task1.cpp>
+#include <task1.cpp>//
+#include <bitset>//для вывода в бинарной форме
 
 using namespace  std;
 int main(int argc, char *argv[])
@@ -17,7 +20,6 @@ int main(int argc, char *argv[])
 //Задание 1.“Калькулятор для расчета идеального веса“.
 #if 0
 
-//используемые переменные camelCase
   bunnerTask1();
   cout << "Для расчета пользователю необходимо ввести следующие данные:\n";
   cout << "\nвозвраст пациента, полных лет: ";
@@ -110,18 +112,60 @@ int main(int argc, char *argv[])
 
 #if 1
 //char
-  char byte='A';
-  cout << "char:" << sizeof(char) << " bytes" << endl;
+  cout << "bool    : " << sizeof(bool) << " byte" << endl;
+  cout << "int     : " << sizeof(int) << " bytes" << endl;
+  cout << "char    : " << sizeof(char) << " bytes" << endl;
+  cout << "wchar_t : " << sizeof(wchar_t) << " bytes" << endl;
+  cout << "double  : " << sizeof(double) << " bytes" << endl;
+  cout << "float   : " << sizeof(float) << " bytes" << endl;
+  cout << "long    : " << sizeof(long) << " bytes" << endl;
+  cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой
+  cout << '\n';
 
-//integer
-//TODO разбить int на 2
-  cout << "int:" << sizeof(int) << " bytes" << endl;
-  cout << "bool:" << sizeof(bool) << " byte" << endl;
-  cout << "double:" << sizeof(double) << " bytes" << endl;
-  cout << "float:" << sizeof(float) << " bytes" << endl;
-  cout << "long:" << sizeof(long long) << " bytes" << endl;
-  cout << "unsigned int:" << sizeof(unsigned int) << " bytes" << endl;
-  cout << "unsigned :" << sizeof(unsigned int) << " bytes" << endl;
+  //0-false 1..255-true
+  bool lYes{true}, lNo{false};
+  cout.setf(ios::boolalpha);
+  cout << "<BOOL> logical от " << lYes << " до " << lNo << endl;
+  printf("<BOOL> decimal/hexadecimal от %X до %X\n",lYes,lNo);
+  cout << "<BOOL> binary от " << (int)lYes << " до " << (int)lNo << endl;
+  cout << "\n";
+
+  //встроенные константы для типов -128 до 127
+  char cMin{CHAR_MIN};
+  char cMax{CHAR_MAX};
+  cout << "<CHAR> decimal от " << (int)cMin << " до " << (int)cMax << endl;
+  printf("<CHAR> hexadecimal от %X до %X\n",cMin,cMax);//FFFFFF80-cMin 7F-cMax
+  //указываем размер шаблона 8 бит и указываем число для создаваемого объекта
+  bitset<sizeof(char)*8> bCharMin((int)cMin);
+  bitset<sizeof(char)*8> bCharMax((int)cMax);
+  cout << "<CHAR> binary от " << bCharMin << " до " << bCharMax << endl;
+  cout << "\n";
+
+  //встроенные константы 255
+  unsigned char ucMax{UCHAR_MAX};
+  cout << "<UNSIGNED CHAR> decimal от " << 0 << " до " << (int)ucMax << endl;
+  printf("<UNSIGNED CHAR> hexadecimal от %X до %X\n",0,cMax);
+  bitset<sizeof(char)*8> uChar((int)ucMax);
+  cout << "<UNSIGNED CHAR> binary от " << 0 << " до " << uChar << endl;
+  cout << "\n";
+
+  //встроенные константы -32768 32767
+  int iMin{SHRT_MIN};
+  int iMax{SHRT_MAX};//аналогичен int
+  cout << "<INT> decimal от " << iMin << " до " << iMax << endl;
+  printf("<INT> hexadecimal от %X до %X\n",iMin,iMax);//
+  bitset<sizeof(int)*8> bIntMin((int)iMin);
+  bitset<sizeof(int)*8> bIntMax((int)iMax);
+  cout << "<INT> binary от " << bIntMin << " до " << bIntMax << endl;
+  cout << "\n";
+
+  //встроенные константы unsgined long long как самое большое данное, помоему
+  unsigned long long ullMax{ULLONG_MAX};//18,446,744,073,709,551,615 (0xffffffffffffffff)
+  cout << "<UNSIGNED LONG LONG> decimal от " << 0 << " до " << ullMax << endl;
+  printf("<UNSIGNED LONG LONG> hexadecimal от %X до %X\n",0,ullMax);//
+  bitset<sizeof(unsigned long long)*8> bullMax((unsigned long long)ullMax);
+  cout << "<UNSIGNED LONG LONG> binary от " << 0 << " до " << bullMax << endl;
+  cout << "\n";
 
 #endif
   return 0;
