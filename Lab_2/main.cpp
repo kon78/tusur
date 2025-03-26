@@ -1,6 +1,5 @@
 //TODO git ветка lab2, слить с веткой master!!!! LOCALE?
 //TODO округление весов до целых наверно
-//TODO binprintf(...) наверное можно убрать
 
 /*
 * Лабораторная работа No2
@@ -40,7 +39,6 @@ int main(int argc, char *argv[])
   float indexOldYears;
   enum{HighConst=100};
 
-
 #define patMassBroke() (((patHigh) - (HighConst)) * (brokCoef))
 #define viewBroke() (cout<<"масса пациента "<<(patMass)<<" масса по Броку "<<(patMassAlg)<<endl)
   //вывод результатов
@@ -61,67 +59,71 @@ int main(int argc, char *argv[])
       cout << "Вес необходимо набрать на " << ((patMassAlg) - (patMass)) << " килограмм \n"; \
     } }while(0)
 
+enum{indMass16=16,indMass25=25,indMass30=30,indMass35=35,indMass40=40};
+//const float indMass18_5=18.5;
 #define answerIndMass(index) \
   do { \
+  const float indexNorm1 = 18.5; \
+  const float indexNorm2 = 25; \
   cout << "Вариант расчета индекс массы тела " << (index) << "\n"; \
-  if((index) < 16){ \
+  if((index) < indMass16){ \
     cout << "\nВыраженный дифицит массы тела."; \
-  }else if(((index) > 16) && ((index) < 18.5)){ \
+  }else if(((index) > indMass16) && ((index) < indexNorm1)){ \
     cout << "\nНедостаточная (дефицит) масса тела."; \
-  }else if(((index) > 18.5) && ((index) < 25)){ \
+  }else if(((index) > indexNorm1) && ((index) < indexNorm2)){ \
     cout << "\nНорма."; \
-  }else if(((index) > 25) && ((index) < 30)){ \
+  }else if(((index) > indexNorm2) && ((index) < indMass30)){ \
     cout << "\nИзбыточная масса тела (предожирение)."; \
-  }else if(((index) > 30) && ((index) < 35)){ \
+  }else if(((index) > indMass30) && ((index) < indMass35)){ \
     cout << "\nОжирение первой степени"; \
-  }else if(((index) > 35) && ((index) < 40)){ \
+  }else if(((index) > indMass35) && ((index) < indMass40)){ \
     cout << "\nОжирение второй степени"; \
-  }else if((index) > 40){ \
+  }else if((index) > indMass40){ \
     cout << "\nОжирение третьей степени (морбидное)"; \
   } \
 cout << "\nВариант расчета " << "по индексу массы тела (индекс массы тела " << (index) \
      << ") вес " << (patMass) << " килограмм.\n"; \
-const float indexNorm1 = 18.5; \
-const float indexNorm2 = 25; \
 normMass1 = (indexNorm1 * ((indPatHigh) * (indPatHigh))); \
 normMass2 = (indexNorm2 * ((indPatHigh) * (indPatHigh))); \
 if((index) < 18.5){ \
-  cout << "Вес необходимо набрать на " << ((normMass1) - (patMass)) << " килограмм."; \
+  cout << "Вес необходимо набрать на " << ((normMass1) - (patMass)) << " килограмм.\n"; \
 }else if((index) > 25){ \
-  cout << "Вес необходимо сбросить на " << ((patMass) - (normMass2)) << " килограмм."; \
+  cout << "Вес необходимо сбросить на " << ((patMass) - (normMass2)) << " килограмм.\n"; \
 }else{ \
   cout << "Вес пациента в пределах нормы!\n"; \
 } \
   }while(0)
 
-#define answerIndMass(index) \
-  do { \
-    cout << "Вариант расчета индекс массы тела " << (index) << " возраст пациента "  << (patOldYears) << "\n"; \
-}while(0)
-
+enum{patYr19=19,patYr24=24,patYr25=25,patYr34=34,patYr35=35,patYr44=44,patYr45=45,patYr54=54,patYr55=55};
+const float indYr21_4=21.4,indYr19_5=19.5,//коэффициенты в зависимости от возраста и пола пациента
+            indYr21_6=21.6,indYr23_2=23.2,
+            indYr22_9=22.9, indYr23_4=23.4,
+            indYr25_8=25.8, indYr25_2=25.2,
+            indYr26_6=26.6, indYr27_3=27.3;
 #define selYears(patSex,patOldYears) \
   do { \
-  cout << "years " << (patOldYears) << ((patSex)?" Мужчина ":" Женщина "); \
-  if(((patOldYears) >= 19) && ((patOldYears) <= 24)){ \
-      ((patSex)?indexOldYears = 21.4:indexOldYears = 19.5); \
-    }else if(patOldYears >= 25 && patOldYears <= 34){ \
-      ((patSex)?indexOldYears = 21.6:indexOldYears = 23.2); \
-    }else if(patOldYears >=35 && patOldYears <=44){ \
-      ((patSex)?indexOldYears = 22.9:indexOldYears = 23.4); \
-    }else if(patOldYears >=45 && patOldYears <=54){ \
-      ((patSex)?indexOldYears = 25.8:indexOldYears = 25.2); \
-    }else if(patOldYears > 55){ \
-      ((patSex)?indexOldYears = 26.6:indexOldYears = 27.3); \
+  cout << "Возраст " << (patOldYears)  << " лет " << ((patSex)?" Мужчина ":" Женщина "); \
+  if(((patOldYears) >= patYr19) && ((patOldYears) <= patYr24)){ \
+      ((patSex)?indexOldYears = indYr21_4:indexOldYears = indYr19_5); \
+    }else if(patOldYears >= patYr25 && patOldYears <= patYr34){ \
+      ((patSex)?indexOldYears = indYr21_6:indexOldYears = indYr23_2); \
+    }else if(patOldYears >=patYr35 && patOldYears <=patYr44){ \
+      ((patSex)?indexOldYears = indYr22_9:indexOldYears = indYr23_4); \
+    }else if(patOldYears >=patYr45 && patOldYears <=patYr54){ \
+      ((patSex)?indexOldYears = indYr25_8:indexOldYears = indYr25_2); \
+    }else if(patOldYears > patYr55){ \
+      ((patSex)?indexOldYears = indYr26_6:indexOldYears = indYr27_3); \
     } \
   }while(0)
 
 #define answerIndMassOldYear(indexOldYears) \
   do { \
-  indPatHigh = ((float)(patHigh) / 100); \
+  indPatHigh = ((float)(patHigh) / HighConst); \
     normMass1 = (indexOldYears * ((indPatHigh) * (indPatHigh))); \
   } \
   while(0)
 
+//основной код
   cout << "Программа Калькулятор для расчета идеального веса.\n";
 
   cout << "Для расчета пользователю необходимо ввести следующие данные:\n";
@@ -134,26 +136,26 @@ if((index) < 18.5){ \
   cout << "\nПациаент мужчина-1, женщина-0 :";
   cin >> patSex;
   cout << "\nПодсчет идеального веса\na - по формуле Брока\nb - по индексу массы тела\nc - по индексу "
-       << "массы тела с учетом вораста\nВыберите вариант расчета:";
+       << "массы тела с учетом вораста\nВыберите вариант расчета: ";
 
   cin.clear();  cin >> algProg;
-
+//ограничения по вводимым данным
+enum{patYearsMin=19,patYearsMax=100,patMassMin=45,patMassMax=125,patHighMin=140,patHighMax=215};
 //проверка введенных данных
-//  errPatData = false;
   if(
-     (patOldYears <= 19 || patOldYears > 100) || //от 19 до 100 лет - норма
-     (patMass < 45 || patMass > 125) || //от 45 до 125 килограмм - норма
-     (patHigh < 140 || patHigh > 215) //от 140 до 215 сантиметров - норма
+     (patOldYears <= patYearsMin || patOldYears > patYearsMax) || //от 19 до 100 лет - норма
+     (patMass < patMassMin || patMass > patMassMax) || //от 45 до 125 килограмм - норма
+     (patHigh < patHighMin || patHigh > patHighMax) //от 140 до 215 сантиметров - норма
      ){
 //    errPatData = true;
     cout << "Были введены неверные данные:\n";
-    if(patOldYears <= 19 || patOldYears > 100)
+    if(patOldYears <= patYearsMin || patOldYears > patYearsMax)
       cout << "Неверный возраст пациента -->" << patOldYears << endl;
 
-    if(patMass < 45 || patMass > 125)
+    if(patMass < patMassMin || patMass > patMassMax)
       cout << "Неверный вес пациента -->" << patMass << endl;
 
-    if(patHigh < 140 || patHigh > 215)
+    if(patHigh < patHighMin || patHigh > patHighMax)
       cout << "Неверный рост пациента -->" << patHigh << endl;
     exit(1);
   }
@@ -163,10 +165,11 @@ if((index) < 18.5){ \
    * мужчины вес = (рост см - 100) * 0.9
    * женщины вес = (рост см - 100) * 0.85
   */
-
+//enum{coefMaleBrok=0.9,coefFemaleBrok=0.89};
+const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 //расчеты общий расчет по имеющимся данным
   if(algProg == 'a'){
-    ((patSex)?brokCoef = 0.9:brokCoef = 0.89);//male female
+    ((patSex)?brokCoef = coefMaleBrok:brokCoef = coefFemaleBrok);//male female
     //расчет по формуле Брока
     patMassAlg = patMassBroke();
     answer();
@@ -179,7 +182,7 @@ if((index) < 18.5){ \
      * вес,кг = индекс * рост,м2
     */
     if(patHigh != 0){//проверка на 0, на всякий случай
-      indPatHigh = (float)patHigh / 100;//перевод в метры
+      indPatHigh = (float)patHigh / HighConst;//перевод в метры
       index = (float)patMass / (indPatHigh * indPatHigh);
       answer();
       answerIndMass(index);//ответ на экран
@@ -191,6 +194,7 @@ if((index) < 18.5){ \
      * вес по индексу массы тела и возрасту
     */
     selYears(patSex,patOldYears);//индекс в зависимости от возраста и пола пациента
+                                 //в переменную indexOldYears
     answer();
     answerIndMassOldYear(indexOldYears);
       if((patMass - normMass1) > 0){//избыточный вес
