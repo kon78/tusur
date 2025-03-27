@@ -1,6 +1,3 @@
-//TODO git ветка lab2, слить с веткой master!!!! LOCALE?
-//TODO округление весов до целых наверно
-
 /*
 * Лабораторная работа No2
 * Исследование ввода-вывода типов данных стандартной библиотеки С++
@@ -11,7 +8,7 @@
 */
 
 //выполняемя задача TASK_1,2,3...N
-#define TASK_1
+#define TASK_10
 //подключаем библиотеки
 //для калькулятора
 #include <string>
@@ -19,8 +16,32 @@
 
 #include <iostream>
 #include <bitset>//для вывода в бинарной форме
+#include <math.h>
 
-using namespace  std;
+#if defined TASK_6
+#define func (cout << "hello\n");
+
+#define print_value(n) \
+  do { \
+    printf(#n"=",n); \
+    cout.setf(ios::boolalpha); \
+    cout \
+      << ( (n==true)?true:false) << " "; \
+  }while(0)
+
+#define print_val_numb(n) \
+  do { \
+    printf(#n"=%d ",n); \
+  }while(0)
+
+//enum{NO=false,YES=true};
+//const bool bLogicA = NO; const bool bLogicB = YES;
+//const bool bLogicC = NO; const bool bLogicD = NO;
+//const bool bLogicE = NO;
+#endif
+
+using namespace std;
+
 int main(int argc, char *argv[])
 {
 //Задание 1.“Калькулятор для расчета идеального веса“.
@@ -168,6 +189,9 @@ enum{patYearsMin=19,patYearsMax=100,patMassMin=45,patMassMax=125,patHighMin=140,
 //enum{coefMaleBrok=0.9,coefFemaleBrok=0.89};
 const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 //расчеты общий расчет по имеющимся данным
+
+  cout.setf(ios::fixed);cout.precision(1);//точность до 1 знаков после запятой
+
   if(algProg == 'a'){
     ((patSex)?brokCoef = coefMaleBrok:brokCoef = coefFemaleBrok);//male female
     //расчет по формуле Брока
@@ -214,10 +238,9 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 #endif
 
 //Задание 2. Вывод основных размеров типов даных С++.
-
-#if 0
-  enum{BYTE_SIZE=8};//енумератор для переменной
-//char
+#if defined TASK_2
+  enum{BYTE_SIZE=8};
+//type:____bytes
   cout << "bool    : " << sizeof(bool) << " byte" << endl;
   cout << "int     : " << sizeof(int) << " bytes" << endl;
   cout << "char    : " << sizeof(char) << " bytes" << endl;
@@ -227,6 +250,27 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
   cout << "long    : " << sizeof(long) << " bytes" << endl;
   cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой
   cout << '\n';
+
+  //модификатор unsigned/signed; short/long/long long
+  //unsigned int:____bytes;
+  cout << "unsigned char          : " << sizeof(unsigned char) << " bytes " << endl;
+  cout << "signed char            : " << sizeof(signed char) << " bytes " << endl;
+
+  cout << "int                    : " << sizeof(int) << " bytes " << endl;
+  cout << "signed int             : " << sizeof(signed int)  << " bytes " << endl;
+  cout << "unsigned int           : " << sizeof(unsigned int)  << " bytes " << endl;
+
+  cout << "short int              : " << sizeof(short int) << " bytes " << endl;
+  cout << "signed short int       : " << sizeof(signed short int)  << " bytes " << endl;
+  cout << "unsigned short int     : " << sizeof(unsigned short int)  << " bytes " << endl;
+
+  cout << "long int               : " << sizeof(long int) << " bytes " << endl;
+  cout << "signed long int        : " << sizeof(signed short int)  << " bytes " << endl;
+  cout << "unsigned long int      : " << sizeof(unsigned short int)  << " bytes " << endl;
+  cout << "signed long long int   : " << sizeof(signed long long int)  << " bytes " << endl;
+  cout << "unsigned long long int : " << sizeof(unsigned long long int)  << " bytes " << endl;
+
+  cout << "long double            : " << sizeof(long double) << " bytes " << endl;
 
   //0-false 1..255-true
   bool lYes{true}, lNo{false};
@@ -275,7 +319,8 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 
 #endif
 
-#if 0
+//Задание 3. Среднее арифметическое из введенных 10 чисел.
+#if defined TASK_3
   //используемые переменные
   float fnumbFloat;
   float fnumbCin;
@@ -284,9 +329,7 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
   //в цикле for вводим числа
   for(int i=0; i < COUNT; i++){
 
-      //FIX:русские символы в консоли???
        cout << "Введите (десятичное) число " << i+1 << " : ";
-//      cout << "Vvedite (desyatichnoe) chislo " << i+1 << " : ";
       cin >> fnumbCin;
       if(cin.fail()){
           errCin=true;
@@ -295,44 +338,42 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 
       fnumbFloat += fnumbCin; //суммируем
       cin.clear();//очищаем буфер
-      //TODO:проверка ввода?
   }
 
   if(!errCin)
    cout << "Сумма введенных чисел равна " << fnumbFloat << endl;
-//      cout << "Summa vvedennih chisel " << fnumbFloat << endl;
   else
       cout << "Was Error CIN!!!";
 
 #endif
 
-#if 0
-  float fNumb = 34.50;
-  cout << "Число " << fNumb << " экспоненциальная запись " << 3.45e1 << endl;
+//Задание 4. Экспоненциальная запись числа.
+#if defined TASK_4
+  cout << "Число 34.50 " << " экспоненциальная запись 3.450e1" << " 4 значащих числа" << endl;
+  cout << "Запись средствами С++ " << uppercase << scientific << 34.50 << endl;
 
-  fNumb = 0.004000;
-  cout << "Число " << fNumb << " экспоненциальная запись " << 4.0e-3 << endl;
+  cout << "Число 0.004000 " << " экспоненциальная запись 4.000e-3 " << "4 значащих числа" << endl;
+  cout << "Запись средствами С++ " << uppercase << scientific << 0.004000 << endl;
 
-  fNumb = 123.005;
-  cout << "Число " << fNumb << " экспоненциальная запись " << 123.005e0 << " или " << 123005e-3 << endl;
+  cout << "Число 123.005 " << " экспоненциальная запись 1.23005e2" << " 6 значащих чисел" << endl;
+  cout << "Запись средствами С++ " << uppercase << scientific << 123.005 << endl;
 
-  int iNumb = 146000;
-  cout << "Число " << iNumb << " экспоненциальная запись " << 146e3 << endl;
+  cout << "Число 146000 " << " экспоненциальная запись 1.46e5" << " 3 значащих числа" << endl;
+  cout << "Запись средствами С++ " << uppercase << scientific << 146000 << endl;
   return 0;
 
 #endif
 
-#if 0
+//Задание5.1. Логические выражения.
+#if defined TASK_5
   // (true && true) || false
   // (true && true) = true
   // true || false = true
-  // true
   cout << "Логическое выражение (true && true) || false --> " << (((true && true) || false)?"true":"false") << endl;
 
   // (false && true) || true
   // (false && true) = false
   // false || true = true
-  //ios::boolalpha
   cout << "Логическое выражение (false && true) || true --> " << (((false && true) || true)?"true":"false") << endl;
 
   // (false && true) || false || true
@@ -354,7 +395,77 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 
 #endif
 
-#if 0
+//Задание 5.2. Логические выражения.
+#if defined TASK_6
+  enum{NO=false,YES=true};
+  const bool bLogicA(NO); const bool bLogicB(YES);//исрользуем один раз
+  const bool bLogicC(NO); const bool bLogicD(YES);
+  const bool bLogicE(NO); const bool bLogicF(NO);
+
+cout << "Заданные переменные:" << endl;
+print_value(bLogicA);print_value(bLogicB);print_value(bLogicC);print_value(bLogicD);print_value(bLogicE);
+//( (_&&_) || (!_) && (_||_) ) --> ((bLogicA && bLogicB) || (!bLogicC) && (bLogicD || bLogicE)) -->
+//                                 ( (false && true) || (!false) && (false || false) ) -->
+//                                 (      (false)    ||  (true)  && (false) ) --> false
+cout << "\nЛогическое выражение: ((bLogicA && bLogicB) || (!bLogicC) && (bLogicD || bLogicE))\n"
+     << "Результат: ";
+cout.setf(std::ios::boolalpha);
+bool bAnsLogic = (
+                  ( (!bLogicC) && (bLogicD || bLogicE) ) ||
+                  (bLogicA && bLogicB)
+                                                         );
+  cout << ((bool)(bAnsLogic)?"true\n":"false\n");
+
+cout << "\nЗаданные переменные:" << endl;
+print_value(bLogicA);print_value(bLogicB);print_value(bLogicC);print_value(bLogicD);print_value(bLogicE);
+//((_ &&_ ) || (_&&_) || (!_)) --> ( (bLogicA && bLogicB) || (bLogicC && bLogicD) || (!bLogicE) ) -->
+//                                 ( (false && true) || (false && true) || (!false)) -->
+//                                 ( false || false || true ) --> true
+cout << "\nЛогическое выражение: ((bLogicA && bLogicB) || (bLogicC && bLogicD) || (!bLogicE))\n"
+     << "Результат: ";
+cout.setf(std::ios::boolalpha);
+bAnsLogic = (
+             (bLogicC && bLogicD) || (!bLogicE) ||
+             (bLogicA && bLogicB)
+      );
+cout << ((bool)(bAnsLogic)?"true\n":"false\n");
+
+cout << "\nЗаданные переменные:" << endl;
+print_value(bLogicA);print_value(bLogicB);print_value(bLogicC);print_value(bLogicD);print_value(bLogicE);
+print_value(bLogicF);
+
+//((_ || _) && (_ || _) && (_||_)) --> ( (bLogicA || bLogicB) && (bLogicC || bLogicD) && (bLogicE || bLogicF) ) -->
+//                                     ( (false || true) && (false || true) && (false || false) ) -->
+//                                     ( (true && true && false)) --> false
+cout << "\nЛогическое выражение: ((bLogicA || bLogicB) && (bLogicC || bLogicD) && (bLogicE || bLogicF))\n"
+     << "Результат: ";
+cout.setf(std::ios::boolalpha);
+bAnsLogic = (
+             (bLogicA || bLogicB) && (bLogicC || bLogicD) && (bLogicE || bLogicF)
+            );
+cout << ((bool)(bAnsLogic)?"true\n":"false\n");
+
+enum{numb1=2,numb2=4,numb3=1,numb4=-3,numb5=7,numb6=0};
+const int numConstA=numb1; const int numConstB=numb2; const int numConstC=numb3;
+const int numConstD=numb4; const int numConstE=numb5; const int numConstF=numb6;
+cout << "\nЗаданные переменные:" << endl;
+print_val_numb(numConstA);print_val_numb(numConstB);print_val_numb(numConstC);
+print_val_numb(numConstD);print_val_numb(numConstE);print_val_numb(numConstF);
+//((_ >_) && (_<_) && (_!=_)) --> ( (numConstA > numConstB) && (numConstC < numConstD) && ( numConstE != numConstF)) -->
+//                                     ( 2     >      4 )   && (    1     <     3    ) && (      7    !=     0    ) -->
+//                                     ( false ) && (false ) && ( true ) --> false
+cout << "\nЛогико-арифметическое выражение: (numConstA > numConstB) && (numConstC < numConstD) && ( numConstE != numConstF)\n"
+     << "Результат: ";
+cout.setf(std::ios::boolalpha);
+bAnsLogic = (
+             (numConstA > numConstB) && (numConstC < numConstD) && ( numConstE != numConstF)
+            );
+cout << ((bool)(bAnsLogic)?"true\n":"false\n");
+#endif
+
+
+//Задание 5.3. Законы де Моргана.
+#if defined TASK_7
   // правильность законов де Моргана
   // не (a и b) = (не a) или (не b)
   // !(logicA && logicB) == (!logicA) || (!logicB)
@@ -423,47 +534,128 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 
 #endif
 
-#if 0
+//Задание 5.4. Логико-арифметические выражения.
+#if defined TASK_8
   int x,y,z,v;
   bool logicValue;
   cout << "Введите числа x y z v: ";
-  //cin >> x >> y >> z >> v;
+  cin >> x >> y >> z >> v;
   cout << "Были введены следующие числа x=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
 
-  cout << "Введите числа x y z v: ";
-  //cin >> x >> y >> z >> v;
-  cout << "Были введены следующие числа x=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
-  x = 3 + 4 + 5;//ранее введенное значение в x "стирается" оператором присваивания "=" \
-  x = 12
+/*
+ * ранее введенное значение в x "стирается" оператором присваивания "=" x = 12
+*/
+  x = 3 + 4 + 5;
   cout << "Результат:\nx=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
 
-  cout << "Введите числа x y z v: ";
-  //cin >> x >> y >> z >> v;
-  cout << "Были введены следующие числа x=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
-  x = y = z;//значение введенное в z присваивается переменным y и z \
-  x=54 y=54 z=54 (54 как пример)
+/*
+ * значение введенное в z присваивается переменным y и x
+*/
+  x = y = z;
   cout << "Результат:\nx=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
 
-  cout << "Введите числа x y z v: ";
-  //cin >> x >> y >> z >> v;
-  cout << "Были введены следующие числа x=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
   z *= ++y + 5;//умножение содержимого z на инкремент y+1 + 5
   cout << "Результат:\nx=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
 
-  cout << "Введите числа x y z v: ";
-  cin >> x >> y >> z >> v;
-  cout << "Были введены следующие числа x=" << x << " y=" << y << " z=" << z << " v=" << v << endl;
   //в данном случае при введенных значениях 3 4 27 4 \
   x=3(0011) y=4(0100) z=27(11011) v=4(0100) logicValue=1(true) \
   x=2(0010) y=2(0010) z=2(0010) v=2(0010) logicValue=1(true) \
   то есть при любых значениях отличного от нуля будет происходить преобразование компилятором \
   [ячейка]=1,2,3,...n --> true, и если [ячейка]=0 --> false \
-
+  Приоритет логических операций 1.действия в скобках 2.инверсия 3.конъюнкция/\ 4.дизъюнкция\/. \
+  x || y && z || v = 0, когда все 0 \
 
   logicValue = x || y && z || v;
+  cout.setf(std::ios::boolalpha);
   cout << "Результат:\nx=" << x << " y=" << y << " z=" << z << " v=" << v
        << " logicValue=" << logicValue <<  endl;
 
+
+//  logicValue = 2 || 0 && 0 || 9;
+//  cout << "logicValue=" << logicValue << endl;
+
+//  logicValue = 0 || (2 && 3) || 0;
+//  cout << "logicValue=" << logicValue << endl;
+
+//  logicValue = (2 || 0) && (0 || 9);
+//  cout << "logicValue=" << logicValue << endl;
+
+//  logicValue = 0 || 0 && 0 || 0;
+//  cout << "logicValue=" << logicValue << endl;
+
+#endif
+
+//Задание 5.5.Сдвиг числа влево.
+#if defined TASK_9
+  enum{BYTE_SIZE=8};
+  unsigned int numbCin, numbShift, resultNumb;
+  cout << "Введите целое число от 0 до " << (pow(2,4)) << ":";
+  cin
+      >> numbCin;
+
+  cout << "Введите целое число на которое необходимо сдвинуть " << numbCin << " влево:";
+  cin
+      >> numbShift;
+
+  if(numbCin != 0 && numbCin <= 16 && !cin.fail()){
+    cout << "Число " << numbCin << " сдвиг влево на " << numbShift << endl;
+    resultNumb = (numbCin << numbShift);
+    cout << "Dec   : " << resultNumb << endl;
+    bitset<sizeof(unsigned int)*BYTE_SIZE> binNumb(resultNumb);
+    cout << "Binary: " << binNumb << endl;
+    cout.unsetf(ios::dec);cout.setf(ios::hex);
+    cout << "Hex   : " << resultNumb << endl;
+    cout.unsetf(ios::hex);cout.setf(ios::oct);
+    cout << "Oct   : " << resultNumb << endl;
+}
+  else{
+    cout << "Не выполняется условие от 0 до 16 или ошибка ввода!\n";
+    exit(0);
+  }
+
+#endif
+
+//Задание  6.Приоритет выражений и ассоциатовности.
+/*
+ * Приоритет выражений возведение в степень ^ здесь выжны скобки!
+ * умножение *
+ * деление /
+ * сложение +
+ * вычитание -
+ * int res = a | b >> 1;
+ * int res = a /b* k;
+*/
+#if defined TASK_10
+  // --> a + ((b * 1) - (128/5)) --> (a + (b * 1)) - (128/5));
+  int a,b,res,leftRes,rightRes,randNumbA,randNumbB;
+
+    int beg = 1000000; int end = 0;
+    int count = 0;
+    bool ind;
+  while(true){//count != 128 count <= 128
+    randNumbA = rand() % (beg - end + 1) + end;//случайное в пределах от 0 до 1000000
+    randNumbB = rand() % (beg - end + 1) + end;
+    res = randNumbA + randNumbB * 1 - 128 / 5;
+    leftRes = randNumbA + ((randNumbB * 1) - (128/5));
+    rightRes = (randNumbA + (randNumbB * 1)) - (128/5);
+    if((res == leftRes) && (res == rightRes) && (leftRes == rightRes)){
+      ind = true;
+      ++count;
+    }else{
+      ind = false;
+    }
+    if(count > 1000000 || !ind)break;
+  }
+  cout << "count=" << count << endl;
+
+//  res = a + b * 1 - 128 / 5;
+//  leftRes = a + ((b * 1) - (128/5));
+//  rightRes = (a + (b * 1)) - (128/5);
+  if(count == 1000001 && ind){
+    cout << "Запись выражений одинакова\n";
+  }else{
+    cout << "Запись выражений не одинакова\n";
+  }
 #endif
 
 #if 0
