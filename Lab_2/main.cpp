@@ -7,8 +7,8 @@
 * locale (кодировка): UTF-8
 */
 
-//выполняемя задача TASK_1,2,3...N
-#define TASK_10
+//выполняемя задача TASK_1,2,3...11
+#define TASK_1
 //подключаем библиотеки
 //для калькулятора
 #include <string>
@@ -626,6 +626,7 @@ cout << ((bool)(bAnsLogic)?"true\n":"false\n");
  * int res = a /b* k;
 */
 #if defined TASK_10
+  enum{BYTE_SIZE=8};
   // --> a + ((b * 1) - (128/5)) --> (a + (b * 1)) - (128/5));
   int a,b,res,leftRes,rightRes,randNumbA,randNumbB;
 
@@ -656,9 +657,52 @@ cout << ((bool)(bAnsLogic)?"true\n":"false\n");
   }else{
     cout << "Запись выражений не одинакова\n";
   }
+
+//int res = a | b >> 1; у операций << >> больший приоритет
+  a=4; b=6;//signed
+  unsigned int newA = static_cast<unsigned int>(a);cout << "a=" << newA << endl;
+  unsigned int newB = static_cast<unsigned int>(b);cout << "b=" << newB << endl;
+  unsigned int newRes = static_cast<unsigned int>(res);cout << "res=" << newRes << endl;
+  unsigned int newleftRes = static_cast<unsigned int>(leftRes);
+  unsigned int newrightRes = static_cast<unsigned int>(rightRes);
+
+  //b=0000110 6 \
+    a=0000100 4 \
+    b >> 1 --> 00001100 3 \
+    a | b --> \
+    b 00000011 \
+    a 00000100 \
+  res 00000111 7 \
+
+  bitset<sizeof(unsigned int)*BYTE_SIZE> binNumA(newA);
+  cout << "bin a=" << binNumA << endl;
+
+  bitset<sizeof(unsigned int)*BYTE_SIZE> binNumB(newB);
+  cout << "bin b=" << binNumB << endl;
+
+  bitset<sizeof(unsigned int)*BYTE_SIZE> binNumC(newA | (newB >> 1));
+  cout << " op | " << binNumC << endl;
+
+  newRes = newA | newB >> 1;//тут компилятор считает без скобок
+  newleftRes = (newA | newB) >> 1;//тут мы указываем как считать
+  newrightRes = newA | (newB >> 1);//более правильная запись
+
+  //записи newA | newB >> 1    и    newA | (newB >> 1) --> одинаковы
+  //(newA | newB) >> 1 --> отлична от приведенных выше, с ошибкой
+
+  cout << "res=" << newRes << " leftRes=" << newleftRes << " rightRes=" << newrightRes << endl;
+
+  unsigned int k = 2;
+  a = 8; b = 4;
+  //int res = a / b * k; \
+                    (8/4)*2              8/(4*2)             8/4*2 \
+  приоритет деление затем умножение      ошибка              компилятор \
+
+  cout << "res=" << ((a/b)*k) << " " << (a/(b*k)) << " " << (a/b*k) << endl;
 #endif
 
-#if 0
+#if defined TASK_11
+//в самом простом виде
   cout << "Программа Калькулятор.\nВыполняемые оперции + - * /\n"
        << "Пример использования: 2+2 далее необходимо ввести ввод!\n"
        << "Останов программы <число>s пример: 0s ввод\n";
@@ -721,6 +765,131 @@ cout << ((bool)(bAnsLogic)?"true\n":"false\n");
   }
 
 #endif
-  return 0;
-}
 
+
+
+#if 0
+nt main() { //<-- int
+short a;    //<-- модификатор без типа
+a(65599);   //<-- слишком большое число, хотя short может быть типом данных
+int 5 = 4;  //<-- 5 = 4, нет
+int л = 4;  //<-- русский символ
+char ch;
+ch{5};
+float f;
+f = 3,2;    //<-- , в дробном числе, может и не быть (региональные стандарты)
+}}          //<-- нет парной скобки стеймена (лишняя)
+#endif
+
+#if 0
+#include <iostream>
+int main() {
+int x = 5;
+x = x - 2; //<--x=3 x-=2;
+//a
+std::cout << x << std::endl; // #a x=3
+int y = x;
+//b
+std::cout << y << std::endl; // #b y=3
+//c
+std::cout << x + y << std::endl; // #c 6
+//d
+std::cout << x << std::endl; // #d 3
+int z;
+//e
+std::cout << z << std::endl; // #e z объявлена, но не инициализирована, любое значение
+}
+#endif
+
+#if 0
+#include <iostream>
+//int main() {
+int x = 1;
+x = x++; //<-- 1 ++x;
+
+cout << x << "\n";
+//}
+#endif
+
+#if 0
+#include <iostream>
+//int main(){
+int x = 1;
+std::cout << ++x << "\n"; //<-- 2
+//}
+#endif
+
+#if 0
+enum{SIZE_BYTE=8};
+const int option_1 = 0;//1
+const int option_2 = 1;//2
+const int option_3 = 2;//4
+const int option_4 = 3;//8
+const int option_5 = 4;//16
+const int option_6 = 5;//32
+const int option_7 = 6;//64
+const int option_8{7};//128
+//int main(int argc, char *argv[]){ //<-- (argc argv)
+bitset<8> bits(0x02);
+bits.set(option_1);
+bits.flip(option_3);
+bits.reset(option_7);
+cout << "Bit 1 has value: " << bits.test(option_1) << '\n';
+cout << "Bit 3 has value: " << bits.test(option_3) << '\n';
+cout << "Bit 7 has value: " << bits.test(option_7) << '\n';
+cout << "All the bits: " << bits << '\n';
+//}
+#endif
+
+#if 0
+//int main(int argc, char *argv[]){ //<-- (argc argv)
+//{
+uint8_t a(1); uint8_t b(1), c(3);
+a = a << 1; //<--сдвиг
+printf("a:%d\n", a);
+b = b << 1; //<--b
+printf("b:%d\n", b);
+c |= 1;
+printf("c:%d\n", c);
+//}
+#endif
+
+#if 0
+//int main(int argc, char *argv[]){ //<-- (argc argv)
+int x (0x8);
+cout.unsetf(ios::dec);cout.setf(ios::hex);
+std::cout << "x: " << x << std::endl;
+int y = 0x5;
+std::cout << "y: " << y << std::endl;
+int bin(0);
+bin = 0b101;
+cout << "bin 0b101: " << bin << std::endl;
+//}
+#endif
+
+#if 0
+//int main(int argc, char *argv[]){ //<-- (argc argv)
+int x{8};
+std::cout << "hex: " << cout.setf(ios::hex) << x << std::endl;
+std::cout << "oct: " << cout.setf(ios::oct) << x << std::endl;
+std::cout << "dec: " << cout.setf(ios::dec) << x << std::endl;
+//}
+#endif
+
+#if 0
+//(true && true) || false --> true
+//(false && true) || true --> true
+
+//(false && true) || false || true --> true
+//(5 > 6 || 4 > 3) && (7 > 8) --> false
+//!(7 > 6 || 3 > 4) --> false
+//Какой результат 0110 >> 2 в двоичной системе счисления? 1 (6/2 3/2 --> 1)
+//Какой результат 5 & 12 в десятичной системе счисления? 5 - 0101 & 12 - 1100 = 0100 - 4
+//Какой результат 5 ^ 12 в десятичной системе счисления? 5 - 0101 ^ 12 - 1100 = 1001 - 9 (xor)
+#endif
+
+//Конвертируйте двоичное число 0100 1101 в десятичную систему счисления.
+//0*2^7 + 1*2^6 + 0*2^5 + 0*2^4 + 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0 = 0 + 64 + 0 + 0 + 8 + 4 + 0 + 1 = 77 yes
+
+return 0;
+}
