@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#define Unit 2
+#define Unit 5
 
 #if Unit == 1
 #include "task1.h"//заголовочный файл для задачи 1
@@ -22,6 +22,13 @@
 #include "task2.h"//заголовочный файл для задачи 2
 #endif
 
+#if Unit == 4
+#include "task4.h"//заголовочный файл для задачи 4
+#endif
+
+#if Unit == 5
+#include "task5.h"//заголовочный файл для задачи 5
+#endif
 using namespace std;
 int main(int argc, char *argv[])
 {
@@ -67,7 +74,32 @@ std::cout << "Задание 2" << std::endl;
 #elif Unit == 3
 std::cout << "Задание 3" << std::endl;
 // Вызов функции задания 3 из отдельного файла (*.h ) или модуля (*.срр + *.h)
-//.....
+
+#elif Unit == 4
+  for (int i = 0; i < 10; ++i){
+//    getAnimalName(i);//error invalid conversation int to Animal
+    getAnimalName((Animal)i);//преобразование
+  }
+#elif Unit == 5
+  int numb_1 = -9, numb_2 = -3;
+  cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " <<MyMax(numb_1,numb_2) << endl;
+  numb_1 = static_cast<unsigned short>(6);
+  numb_2 = static_cast<unsigned short>(0);
+  cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " <<MyMax(numb_1,numb_2) << endl;
+
+  for(;;){//бесконечный цикл
+    cout << "Введите числа (целые/со знаком через пробел) :";
+    cin >> numb_1 >> numb_2;
+    if(cin.fail()){
+      cout << "Ошибка! Повторите ввод\n";
+      cin.clear();//удаляем лишнее
+      cin.ignore(32767,'\n');
+    }else{//ищем максимум
+      cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " <<MyMax(numb_1,numb_2) << endl;
+      break;
+    }
+  }
+
 #else
 // Вызов функции задания 4 из отдельного файла (*.h ) или модуля (*.срр + *.h)
 //...

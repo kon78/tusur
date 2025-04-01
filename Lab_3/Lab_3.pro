@@ -11,7 +11,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     task1.cpp \
-    task2.cpp
+    task2.cpp \
+    task4.cpp \
+    task5.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -26,4 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
     task1.h \
-    task2.h
+    task2.h \
+    task3.h \
+    task4.h \
+    task5.h
