@@ -82,10 +82,10 @@ std::cout << "Задание 3" << std::endl;
   }
 #elif Unit == 5
   int numb_1 = -9, numb_2 = -3;
-  cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " <<MyMax(numb_1,numb_2) << endl;
+  cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " << MyMax(numb_1,numb_2) << endl;
   numb_1 = static_cast<unsigned short>(6);
   numb_2 = static_cast<unsigned short>(0);
-  cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " <<MyMax(numb_1,numb_2) << endl;
+  cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " << MyMax(numb_1,numb_2) << endl;
 
   for(;;){//бесконечный цикл
     cout << "Введите числа (целые/со знаком через пробел) :";
@@ -95,10 +95,19 @@ std::cout << "Задание 3" << std::endl;
       cin.clear();//удаляем лишнее
       cin.ignore(32767,'\n');
     }else{//ищем максимум
-      cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " <<MyMax(numb_1,numb_2) << endl;
+      cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет " << MyMax(numb_1,numb_2) << endl;
       break;
     }
   }
+
+  numb_1 = static_cast<int>(-19);
+  numb_2 = static_cast<int>(9000);
+  enum{limit=2147483000};
+  int limit_min = INT_MIN + limit;
+  int limit_max = INT_MAX - limit;
+cout << "Из двух чисел " << numb_1 << " " << numb_2 << " большим будет "
+     << MyMax(numb_1,numb_2,limit_max,limit_min) << endl;
+//MyMax(int first_numb, int second_numb, int limit_max, int limit_min)
 
 #else
 // Вызов функции задания 4 из отдельного файла (*.h ) или модуля (*.срр + *.h)
