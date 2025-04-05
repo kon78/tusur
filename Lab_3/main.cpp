@@ -32,7 +32,7 @@
 using namespace std;
 int main(int argc, char *argv[])
 {
-#if Unit == 1
+#if Unit == 0
 //  double probability_cards; //ответ
 cout << "Задание 1.а" << endl;
 // Вызов функции задания 1 из отдельного файла (*.h ) или модуля (*.срр + *.h)
@@ -100,8 +100,8 @@ std::cout << "Задание 3" << std::endl;
     }
   }
 
-  numb_1 = static_cast<int>(-19);
-  numb_2 = static_cast<int>(9000);
+  numb_1 = static_cast<int>(-19);//сравниваемые числа
+  numb_2 = static_cast<int>(-5);
   enum{limit=2147483000};
   int limit_min = INT_MIN + limit;
   int limit_max = INT_MAX - limit;
