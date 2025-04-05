@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#define Unit 5
+#define Unit 7
 
 #if Unit == 1
 #include "task1.h"//заголовочный файл для задачи 1
@@ -29,10 +29,19 @@
 #if Unit == 5
 #include "task5.h"//заголовочный файл для задачи 5
 #endif
+
+#if Unit == 6
+#include "task6.h"//заголовочный файл для задачи 6
+#endif
+
+#if Unit == 7
+#include "task7.h"//заголовочный файл для задачи 7
+#endif
+
 using namespace std;
 int main(int argc, char *argv[])
 {
-#if Unit == 0
+#if Unit == 1
 //  double probability_cards; //ответ
 cout << "Задание 1.а" << endl;
 // Вызов функции задания 1 из отдельного файла (*.h ) или модуля (*.срр + *.h)
@@ -109,7 +118,14 @@ cout << "Из двух чисел " << numb_1 << " " << numb_2 << " больши
      << MyMax(numb_1,numb_2,limit_max,limit_min) << endl;
 //MyMax(int first_numb, int second_numb, int limit_max, int limit_min)
 
+#elif Unit == 6
+Task6();
+
+#elif Unit == 7
+  MapBuild();
+  Elevator();
 #else
+
 // Вызов функции задания 4 из отдельного файла (*.h ) или модуля (*.срр + *.h)
 //...
 #endif

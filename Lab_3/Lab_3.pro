@@ -13,7 +13,9 @@ SOURCES += main.cpp \
     task1.cpp \
     task2.cpp \
     task4.cpp \
-    task5.cpp
+    task5.cpp \
+    task6.cpp \
+    task7.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -31,4 +33,6 @@ HEADERS += \
     task2.h \
     task3.h \
     task4.h \
-    task5.h
+    task5.h \
+    task6.h \
+    task7.h
