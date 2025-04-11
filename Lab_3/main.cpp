@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#define Unit 7
+#define Unit 3
 
 #if Unit == 1
 #include "task1.h"//заголовочный файл для задачи 1
@@ -20,6 +20,11 @@
 
 #if Unit == 2
 #include "task2.h"//заголовочный файл для задачи 2
+#endif
+
+#if Unit == 3
+#include "task3.h"
+static int param;//глобальная переменная param=0
 #endif
 
 #if Unit == 4
@@ -82,6 +87,14 @@ std::cout << "Задание 2" << std::endl;
 
 #elif Unit == 3
 std::cout << "Задание 3" << std::endl;
+
+cout << "global variable ";
+PRINT_INT(param);
+cout << '\n';
+param = Initialization();//возращаемое значение из функции, переопределяется
+cout << "returned variable ";
+PRINT_INT(param);
+cout << '\n';
 // Вызов функции задания 3 из отдельного файла (*.h ) или модуля (*.срр + *.h)
 
 #elif Unit == 4
