@@ -11,34 +11,43 @@ enum class ProgrEnum {Task_1, Task_2, Task_3/*, Task_4,...*/};
 const ProgrEnum progrEnum = ProgrEnum::Task_1;
 
 #include <iostream>
+#include "sorting.h"
+
 using namespace std;
 
 int main(int* argc, char* argv[])
 {
     if constexpr (progrEnum== ProgrEnum::Task_1) {
         cout << "Задание 1.\n";
+        const unsigned int rnd_const1 = 73129;
+        const unsigned int rnd_const2 = 95121;
+        const unsigned int rnd_devis = 100000;
         const int size_arr = 10;
         int arr_int[size_arr] = {0};
         // cout << "size array is " << (sizeof(arr_int)/sizeof(int)) << endl;
-        if((sizeof(arr_int)/sizeof(int))){
+        if( (sizeof(arr_int)/sizeof(int)) != size_arr ){
+            cout << "Error! Array not equal " << size_arr << endl;
+        }else{
             unsigned value = size_arr + (size_arr / 2);
-            // Порождаем и выводим 20 чисел, используя число 18 как зерно
             for (int i = 0; i < size_arr; ++i)
             {
-                // Итеративно вычисляем новое значение value.
-                value = (value * 73129 + 95121) % 100000;
-                // std::cout << value << std::endl;
+                // вычисляем новое значение value
+                value = (value * rnd_const1 + rnd_const2) % rnd_devis;
                 arr_int[i] = value;
             }
-            //смотрим что получилось
-            for(auto i = 0; i < size_arr; ++i){
-                cout << arr_int[i] << " ";
-            }
+            //смотрим что получилось до сортировки
+            for (auto elem : arr_int)
+                cout << elem << " ";
             cout << endl;
+
+            bubbleSort(arr_int, sizeof(arr_int)/sizeof(int));
             //сортируем buble-sort(пузырьковая)
 
-        }else{
-            cout << "Error! Array not equal " << size_arr << endl;
+            //смотрим что получилось после сортировки
+            for (auto elem : arr_int)
+                cout << elem << " ";
+            cout << endl;
+            cout << "Max elem is " << arr_int[0] << " Min elem is " << arr_int[9] << '\n';
         }
     }
     else if constexpr (progrEnum == ProgrEnum::Task_2) {

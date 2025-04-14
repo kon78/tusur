@@ -1,4 +1,5 @@
 #ifndef SORTING_H
 #define SORTING_H
-void Sorting(int* arr_addr);
+#include <algorithm>//std::swap
+void bubbleSort(int array[], int size);
 #endif // SORTING_H
