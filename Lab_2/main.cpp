@@ -261,7 +261,8 @@ const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
   cout << "double  : " << sizeof(double) << " bytes" << endl;
   cout << "float   : " << sizeof(float) << " bytes" << endl;
   cout << "long    : " << sizeof(long) << " bytes" << endl;
-  cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой
+  //cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой error C2070
+  cout << "void    : " << sizeof(void*) << " bytes" << endl;
   cout << '\n';
 
   //модификатор unsigned/signed; short/long/long long
