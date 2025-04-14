@@ -16,7 +16,30 @@ using namespace std;
 int main(int* argc, char* argv[])
 {
     if constexpr (progrEnum== ProgrEnum::Task_1) {
-        // task 1
+        cout << "Задание 1.\n";
+        const int size_arr = 10;
+        int arr_int[size_arr] = {0};
+        // cout << "size array is " << (sizeof(arr_int)/sizeof(int)) << endl;
+        if((sizeof(arr_int)/sizeof(int))){
+            unsigned value = size_arr + (size_arr / 2);
+            // Порождаем и выводим 20 чисел, используя число 18 как зерно
+            for (int i = 0; i < size_arr; ++i)
+            {
+                // Итеративно вычисляем новое значение value.
+                value = (value * 73129 + 95121) % 100000;
+                // std::cout << value << std::endl;
+                arr_int[i] = value;
+            }
+            //смотрим что получилось
+            for(auto i = 0; i < size_arr; ++i){
+                cout << arr_int[i] << " ";
+            }
+            cout << endl;
+            //сортируем buble-sort(пузырьковая)
+
+        }else{
+            cout << "Error! Array not equal " << size_arr << endl;
+        }
     }
     else if constexpr (progrEnum == ProgrEnum::Task_2) {
         // task 2
