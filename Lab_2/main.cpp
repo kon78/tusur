@@ -8,7 +8,7 @@
 */
 
 //выполняемя задача TASK_1,2,3...11
-#define TASK_1
+#define TASK_0
 //подключаем библиотеки
 //для калькулятора
 #include <string>
@@ -80,12 +80,12 @@ int main(int argc, char *argv[])
       cout << "Вес необходимо набрать на " << ((patMassAlg) - (patMass)) << " килограмм \n"; \
     } }while(0)
 
-enum{indMass16=16,indMass30=30,indMass35=35,indMass40=40};
+enum{indMass16=16,indMass25=25,indMass30=30,indMass35=35,indMass40=40};
 //const float indMass18_5=18.5;
 #define answerIndMass(index) \
   do { \
-  const float indexNorm1 = 18.5f; \
-  const float indexNorm2 = 25.0f; \
+  const float indexNorm1 = 18.5; \
+  const float indexNorm2 = 25; \
   cout << "Вариант расчета индекс массы тела " << (index) << "\n"; \
   if((index) < indMass16){ \
     cout << "\nВыраженный дифицит массы тела."; \
@@ -106,44 +106,40 @@ cout << "\nВариант расчета " << "по индексу массы т
      << ") вес " << (patMass) << " килограмм.\n"; \
 normMass1 = (indexNorm1 * ((indPatHigh) * (indPatHigh))); \
 normMass2 = (indexNorm2 * ((indPatHigh) * (indPatHigh))); \
-if((index) < 18.5f){ \
-  cout << "Вес необходимо набрать на " << ((normMass1) - static_cast<float>(patMass)) << " килограмм.\n"; \
-}else if((index) > 25.0f){ \
-  cout << "Вес необходимо сбросить на " << (static_cast<float>(patMass) - (normMass2)) << " килограмм.\n"; \
+if((index) < 18.5){ \
+  cout << "Вес необходимо набрать на " << ((normMass1) - (patMass)) << " килограмм.\n"; \
+}else if((index) > 25){ \
+  cout << "Вес необходимо сбросить на " << ((patMass) - (normMass2)) << " килограмм.\n"; \
 }else{ \
   cout << "Вес пациента в пределах нормы!\n"; \
 } \
   }while(0)
 
 enum{patYr19=19,patYr24=24,patYr25=25,patYr34=34,patYr35=35,patYr44=44,patYr45=45,patYr54=54,patYr55=55};
-//const float indYr21_4=21.4f,indYr19_5=19.5f,//коэффициенты в зависимости от возраста и пола пациента
-//            indYr21_6=21.6f,indYr23_2=23.2f,
-//            indYr22_9=22.9f, indYr23_4=23.4f,
-//            indYr25_8=25.8f, indYr25_2=25.2f,
-//            indYr26_6=26.6f, indYr27_3=27.3f;
+const float indYr21_4=21.4,indYr19_5=19.5,//коэффициенты в зависимости от возраста и пола пациента
+            indYr21_6=21.6,indYr23_2=23.2,
+            indYr22_9=22.9, indYr23_4=23.4,
+            indYr25_8=25.8, indYr25_2=25.2,
+            indYr26_6=26.6, indYr27_3=27.3;
 #define selYears(patSex,patOldYears) \
   do { \
   cout << "Возраст " << (patOldYears)  << " лет " << ((patSex)?" Мужчина ":" Женщина "); \
   if(((patOldYears) >= patYr19) && ((patOldYears) <= patYr24)){ \
-      ((patSex)?indexOldYears = 21.4f:indexOldYears = 19.5f); \
+      ((patSex)?indexOldYears = indYr21_4:indexOldYears = indYr19_5); \
     }else if(patOldYears >= patYr25 && patOldYears <= patYr34){ \
-      ((patSex)?indexOldYears = 21.6f:indexOldYears = 23.2f); \
+      ((patSex)?indexOldYears = indYr21_6:indexOldYears = indYr23_2); \
     }else if(patOldYears >=patYr35 && patOldYears <=patYr44){ \
-      ((patSex)?indexOldYears = 22.9f:indexOldYears = 23.4f); \
+      ((patSex)?indexOldYears = indYr22_9:indexOldYears = indYr23_4); \
     }else if(patOldYears >=patYr45 && patOldYears <=patYr54){ \
-      ((patSex)?indexOldYears = 25.8f:indexOldYears = 25.2f); \
+      ((patSex)?indexOldYears = indYr25_8:indexOldYears = indYr25_2); \
     }else if(patOldYears > patYr55){ \
-      ((patSex)?indexOldYears = 26.6f:indexOldYears = 27.3f); \
+      ((patSex)?indexOldYears = indYr26_6:indexOldYears = indYr27_3); \
     } \
-  else{ \
-  indexOldYears = 0.0f; \
-}\
   }while(0)
 
-//<-- Warning implicit conversation
 #define answerIndMassOldYear(indexOldYears) \
   do { \
-  indPatHigh = (static_cast<float>(patHigh) / HighConst); \
+  indPatHigh = ((float)(patHigh) / HighConst); \
     normMass1 = (indexOldYears * ((indPatHigh) * (indPatHigh))); \
   } \
   while(0)
@@ -191,7 +187,7 @@ enum{patYearsMin=19,patYearsMax=100,patMassMin=45,patMassMax=125,patHighMin=140,
    * женщины вес = (рост см - 100) * 0.85
   */
 //enum{coefMaleBrok=0.9,coefFemaleBrok=0.89};
-const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
+const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 //расчеты общий расчет по имеющимся данным
 
   cout.setf(ios::fixed);cout.precision(1);//точность до 1 знаков после запятой
@@ -199,8 +195,7 @@ const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
   if(algProg == 'a'){
     ((patSex)?brokCoef = coefMaleBrok:brokCoef = coefFemaleBrok);//male female
     //расчет по формуле Брока
-//    patMassAlg = patMassBroke();//<-- Warning implicit conversation turns floating-point into integer
-    patMassAlg = static_cast<int>(patMassBroke());
+    patMassAlg = patMassBroke();
     answer();
     answerBroke(patMassAlg,patMass);//ответ на экран
 
@@ -211,10 +206,8 @@ const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
      * вес,кг = индекс * рост,м2
     */
     if(patHigh != 0){//проверка на 0, на всякий случай
-//      indPatHigh = (float)patHigh / HighConst;//перевод в метры <--Warning use of old-style cast
-      indPatHigh = static_cast<float>(patHigh) / HighConst;//перевод в метры
-
-      index = static_cast<float>(patMass) / (indPatHigh * indPatHigh);// <--Warning use of old-style cast
+      indPatHigh = (float)patHigh / HighConst;//перевод в метры
+      index = (float)patMass / (indPatHigh * indPatHigh);
       answer();
       answerIndMass(index);//ответ на экран
     }else{
@@ -224,14 +217,8 @@ const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
     /*
      * вес по индексу массы тела и возрасту
     */
-
-//индекс в зависимости от возраста и пола пациента \
-  в переменную indexOldYears \
-  warning <-- помоему не нравится запись, здесь идет приравнивание одной переменной к разным значениям \
-  в зависимости от пола и позраста пациента, то есть преобразования как такового нет я бы оставил как есть \
-
-    selYears(patSex,patOldYears);
-
+    selYears(patSex,patOldYears);//индекс в зависимости от возраста и пола пациента
+                                 //в переменную indexOldYears
     answer();
     answerIndMassOldYear(indexOldYears);
       if((patMass - normMass1) > 0){//избыточный вес
@@ -261,8 +248,7 @@ const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
   cout << "double  : " << sizeof(double) << " bytes" << endl;
   cout << "float   : " << sizeof(float) << " bytes" << endl;
   cout << "long    : " << sizeof(long) << " bytes" << endl;
-  //cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой error C2070
-  cout << "void    : " << sizeof(void*) << " bytes" << endl;
+  cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой
   cout << '\n';
 
   //модификатор unsigned/signed; short/long/long long
