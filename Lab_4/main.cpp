@@ -12,7 +12,9 @@ const ProgrEnum progrEnum = ProgrEnum::Task_4;
 
 #include <iostream>
 #include "sorting.h"
-
+#include "fact.h"
+#include "fib.h"
+#include "task4c.h"
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -121,9 +123,10 @@ int main(int argc, char* argv[])
    }while(true);
       }
       else if constexpr (progrEnum == ProgrEnum::Task_4){
+#if 0
         cout << "Задание 4.\na)\n";
         unsigned int numb, alg;
-        enum {alg_recur=0, alg_iter=1,err_numb=20};
+        enum {alg_recur=0, alg_iter=1,err_numb=13};
 //        const int err_numb(10);//ограничение, можно увеличить
         cout << "Нахождение факториала от числа с использованием (0-рекурсии,1-итерации)\nпример: 1,2...n (через пробел) 0,1 " << endl;
 
@@ -142,11 +145,17 @@ int main(int argc, char* argv[])
           switch(alg){
           case(alg_recur)://рекурсия
           {
-            cout << "рекурсия\n";
+            cout << "Рекурсия.\n";
+            //если fact(numb) > 13 --> переполнение при типе данного INT
+            if(!(numb >= err_numb))
+              cout << "Факториал для " << numb << " равен " << fact(numb) << endl;
+            else
+              cout << "Факториал для " << numb << " превышает " << INT_MAX << endl;
+            break;
           }
           case(alg_iter)://итерация
           {
-            cout << "Итераия.\n";
+            cout << "Итерация.\n";
 
             constexpr size_t N{20};
             unsigned long int arr_fib[N]={1,0};//начальный массив, чтобы тип unsigned long int перекрыл INT_MAX
@@ -158,36 +167,15 @@ int main(int argc, char* argv[])
                 cout << "Факториал для " << numb << " равен " << arr_fib[0] << endl; //0=1
               }else{
 
-//                cout << INT_MAX << endl;
-//                unsigned long int n = INT_MAX-2;
-//                for(int i = 1; i < 5; ++i){
-//                  n += 1;
-//                  if(n > INT_MAX){cout << "override!\n";break;}
-//                  cout << n << endl;
-//                }
-//                exit(0);
-
                 //[1][1][2][6][24][120][720]...
                 for(unsigned int i = 1; i <= numb-1; i++){
                   arr_fib[i] = arr_fib[i-1] * (i+1);
                   //если fac(n) > INT_MAX, непредвиденное поведение
-//                  if(arr_fib[i] / arr_fib[i-1] != numb)cout << "override!\n";
-//                  cout << arr_fib[i] << "/" << arr_fib[i-1] << "=" <<  arr_fib[i]/arr_fib[i-1] << " " << i << endl;
 
                   if(arr_fib[i]/arr_fib[i-1] != (i+1)){
                     arr_fib[i] = 0;
                     break;
                   }
-
-//                  arr_fib[i] = ( ((arr_fib[i] == INT_MAX))?-1:arr_fib[i] );
-
-//                  if(
-//                     arr_fib[i] < 0
-//                     ){
-//                    cout << "Превышен максимальный диапазон " << INT_MAX <<"\n" ;
-//                    exit(0);
-//                  }
-
                 }
               }
               if(numb != 0 && arr_fib[numb-1] != 0)
@@ -197,14 +185,71 @@ int main(int argc, char* argv[])
            cout << '\n';
         }
 
+              break;
           }
+          default:cout << "Неверный выбор! " << alg_recur << " Рекурсия " << alg_iter << " Итерация " << endl;
+            exit(0);//завершаем и сообщаем пользователю
+            break;
           }
-\
 
         }
+#endif
+#if 0
+  cout << "Задание 4.\nб)\n";
+  cout << "Число Фибоначчи.\n";
+//  enum{size_fib=20};
+  int arr_fib[size_fib]={0,1};
+  int numb_fib,answer(0);
+  Fibonachi(arr_fib,size_fib);
+  cout << "Введите число/номер ряда Фибоначчи от 0 до " << size_fib << " ";
+  cin >> numb_fib;
+
+  if(cin.fail() || numb_fib > size_fib){cout << "Ошибка ввода или слишком большое значение!\n";exit(0);}//здесь сбрасывемся по ошибке
+  else cin.ignore(32767,'\n');
+
+  cout << "Было введено " << numb_fib << endl;
+//  cout << sizeof(arr_fib)/sizeof(int) << endl;
+  answer = arr_fib[numb_fib-1];
+  cout << "Элемент ряда Фибоначчи " << numb_fib << " равен " << answer << endl;
+
+//  for(auto el : arr_fib)//выводим на печать массив посчитанный в функции (для проверки)
+//        cout << el << " ";
+//      cout << endl;
+
+#endif
+
+#if 1
+  //.   1 1 \
+       2 1 3 \
+      3 2 1 6 \
+     4 3 2 1 10 \
+    5 4 3 2 1 15 --> Sum[n + (n-1)],while n≠0\
+         /\
+     1->1+0=1 2->2+1=3 3->3+2+1=6 \
+
+  const unsigned int target_sum = 21;
+  //можно if constexpr в цикле while
+  unsigned int sum(0);
+  unsigned int numb(1);
+  unsigned int cnt(1);
+  while(true){
+      SummNumb(numb,sum);
+      PrintNum(numb);
+      --numb;
+      if(numb == 0){
+        numb = ++cnt;
+        cout << " " << sum << '\n';
+        if(sum == target_sum)
+        break;
+        sum=0;
+  }
+  };
+#endif
+
     }
     else {
         // ...
+//      exit(0);
     }
 
     return 0;
