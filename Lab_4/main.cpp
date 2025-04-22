@@ -7,14 +7,15 @@
 * locale (кодировка): UTF-8
 */
 
-enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4};
-const ProgrEnum progrEnum = ProgrEnum::Task_4;
+enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4, Task_5};
+const ProgrEnum progrEnum = ProgrEnum::Task_5;
 
 #include <iostream>
 #include "sorting.h"
 #include "fact.h"
 #include "fib.h"
 #include "task4c.h"
+#include "task5.h"
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -245,6 +246,31 @@ int main(int argc, char* argv[])
   }
   };
 #endif
+
+    }else if constexpr (progrEnum == ProgrEnum::Task_5){
+      unsigned int data_type;
+      unsigned int arr_size;
+      cout << "Задание 5.\n";
+      cout << "Выберите тип данных char-1, 2-short, 3-int, 4-float, 5-double\n";
+      cin >> data_type;
+//      int arr[7]={0,1,2,3,4,5,6};
+//      for(auto el : arr){
+//        if(el < 1 || el > 5){
+//          cout << el << " error!\n";
+//        }
+//      }
+      if(cin.fail() || (data_type < 1 || data_type > 5)){
+        cout << "Ошибка ввода или не правильно выбран тип данных!\n";
+      exit(0);
+      }
+
+      cout << "Укажите размер массива ";
+      cin >> arr_size;
+      if(cin.fail() || arr_size == 0){
+        cout << "Ошибка ввода или не правильно выбран тип данных!\n";
+      exit(0);
+      }
+    MakeArray(data_type,arr_size);
 
     }
     else {
