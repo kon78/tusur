@@ -325,22 +325,48 @@ int main(int argc, char* argv[])
       bool& ref_op2 = op2;
 
 
-#if 1
-      std::function<bool(bool&,bool&)> operation;//определяем переменную std::function
 //      cout << operation(ref_op1,ref_op2) << endl;
-      EnumFuncLog enum_allfunc = (EnumFuncLog::fAnd);
-      operation = LogAND;
-        if(enum_allfunc == EnumFuncLog::fAnd){
 //          cout << BaseFunction(operation(ref_op1,ref_op2)) << endl;
+#if 0
+      EnumFuncLog enum_allfunc = (EnumFuncLog::fAnd);
+        if(enum_allfunc == EnumFuncLog::fAnd){
 
+          cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,&LogAND) << endl;
           cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,&LogAND) << endl;
         }
 #endif
 
+#if 1
+    constexpr int ssize_func(3);
+    EnumFuncLog enum_allfunc = (EnumFuncLog::fEnd);//fEnd=9
+//    void* arr_func[3]={&LogAND, &LogOR, &LogXOR};//хотелось бы так, но по-моему не стоит
+    std::function<bool(bool&,bool&)> arr_func[ssize_func] = {&LogAND, &LogOR, &LogXOR};//массив функций
 
+    std::function<bool(bool&,bool&)> operation;
+//    cout << "size is " << sizeof(arr_func) << endl;
+//    if(sizeof(arr_func) / sizeof(operation) == ssize_func){//так помоему не умеет
+      for(unsigned int i = 0; i < (unsigned int)enum_allfunc; ++i){
+//        std::function<bool(bool&,bool&)> operation;
+        if(i == (unsigned int)EnumFuncLog::fAnd){
+          operation = arr_func[(unsigned int)EnumFuncLog::fAnd];
+          cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,operation,&LogAND) << endl;
+          //        cout << "операнды " << ref_op1 << " " << ref_op2 << " результат "
+          //             << BaseFunction(ref_op1,ref_op2,operation, &arr_func[0] );
+        }else if(i == (unsigned int)EnumFuncLog::fOr){
+          operation = arr_func[(unsigned int)EnumFuncLog::fOr];
+          cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,operation,&LogOR) << endl;
+        }else if(i == (unsigned int)EnumFuncLog::fXor){
+          operation = arr_func[(unsigned int)EnumFuncLog::fXor];
+          cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,operation,&LogXOR) << endl;
+        }else{
+          cout << "нет такой операции\n";
+        }
+      }
 
-
-
+//      }else{
+//        cout << "Целостность массива нарушена!\n";
+//    }
+#endif
 
     }
     else {
