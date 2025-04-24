@@ -15,7 +15,10 @@ SOURCES += main.cpp \
   fib.cpp \
   sorting.cpp \
   task4c.cpp \
-  task5.cpp
+  task5.cpp \
+  task6.cpp \
+  task8.cpp \
+  task9.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -33,4 +36,7 @@ HEADERS += \
   fib.h \
   sorting.h \
   task4c.h \
-  task5.h
+  task5.h \
+  task6.h \
+  task8.h \
+  task9.h

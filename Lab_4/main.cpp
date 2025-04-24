@@ -1,3 +1,4 @@
+//TODO Задание 6,7,9 - уточнить решение
 /*
 * Лабораторная работа No4
 * “Исследование массивов, указателей, ссылок.”
@@ -7,8 +8,8 @@
 * locale (кодировка): UTF-8
 */
 
-enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4, Task_5};
-const ProgrEnum progrEnum = ProgrEnum::Task_5;
+enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4, Task_5, Task_6, Task_7, Task_8, Task_9};
+const ProgrEnum progrEnum = ProgrEnum::Task_9;
 
 #include <iostream>
 #include "sorting.h"
@@ -16,6 +17,10 @@ const ProgrEnum progrEnum = ProgrEnum::Task_5;
 #include "fib.h"
 #include "task4c.h"
 #include "task5.h"
+#include "task6.h"
+#include "task8.h"
+#include "task9.h"
+
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -253,12 +258,6 @@ int main(int argc, char* argv[])
       cout << "Задание 5.\n";
       cout << "Выберите тип данных char-1, 2-short, 3-int, 4-float, 5-double\n";
       cin >> data_type;
-//      int arr[7]={0,1,2,3,4,5,6};
-//      for(auto el : arr){
-//        if(el < 1 || el > 5){
-//          cout << el << " error!\n";
-//        }
-//      }
       if(cin.fail() || (data_type < 1 || data_type > 5)){
         cout << "Ошибка ввода или не правильно выбран тип данных!\n";
       exit(0);
@@ -271,6 +270,77 @@ int main(int argc, char* argv[])
       exit(0);
       }
     MakeArray(data_type,arr_size);
+
+    }else if constexpr (progrEnum == ProgrEnum::Task_6){
+      int m; double fx; char cht;
+      cout << "Задание 6.\n";
+      cout << "Введите 3 числа(символа)\n";
+      cout << "Целое ";
+      cin >> m;
+      if(cin.fail()){
+        cout << "Ошибка ввода!\n";
+        exit(0);
+      }
+
+      cout << "Дробное ";
+      cin >> fx;
+      if(cin.fail()){
+        cout << "Ошибка ввода!\n";
+        exit(0);
+      }
+
+      cout << "Символ ";
+      cin >> cht;
+
+     cout << "Были введены " << m << " " << fx << " " << cht << '\n';
+
+     cout << "Используя операторы & и *:\n";
+     PrintValAddr(&m,sizeof(m));//передаем адрес и размер
+     PrintValAddr(&fx,sizeof(fx));
+     PrintValAddr(&cht,sizeof(cht));
+
+    }else if constexpr (progrEnum == ProgrEnum::Task_7){
+      cout << "Задание 7.\n";
+      const int ssize(5);
+      int iArrData[ssize]{5,7,2,9,8};
+      int* ptr = nullptr;
+
+      ptr = iArrData;//адрес массива в указатель
+      if(sizeof(iArrData)/sizeof(int) == ssize){
+        for(unsigned int i = 0; i < ssize; ++i){
+          cout << "адрес ячейки " << ptr << " массива iArrData [" << i << "] = " << *ptr << endl;
+          ++ptr;//increment ptr
+        }
+      }
+    }else if constexpr (progrEnum == ProgrEnum::Task_8){
+      cout << "Задание 8.\n";
+      char arr[LEN_ARR]{'W', 'U', 'V'};
+      char(&ref_arr)[LEN_ARR] = arr;//reference
+      Phase(ref_arr);
+    }else if constexpr (progrEnum == ProgrEnum::Task_9){
+      cout << "Задание 9.\n";
+//      bool bAnswer;//ответ для лог.функций
+      bool op1 = false; bool op2 = true;
+      bool& ref_op1 = op1;
+      bool& ref_op2 = op2;
+
+
+#if 1
+      std::function<bool(bool&,bool&)> operation;//определяем переменную std::function
+//      cout << operation(ref_op1,ref_op2) << endl;
+      EnumFuncLog enum_allfunc = (EnumFuncLog::fAnd);
+      operation = LogAND;
+        if(enum_allfunc == EnumFuncLog::fAnd){
+//          cout << BaseFunction(operation(ref_op1,ref_op2)) << endl;
+
+          cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,&LogAND) << endl;
+        }
+#endif
+
+
+
+
+
 
     }
     else {

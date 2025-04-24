@@ -61,6 +61,7 @@ void InsertionSort(double array[], int size){
     }
 }
 
+
 void MakeArray(unsigned int& dtype, unsigned int& sarr){
   enum{tpChar=1,tpshort,tpint,tpfloat, tpdouble};
   const char type_name[][10]{"int","short","int","float","double"};
