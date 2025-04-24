@@ -8,8 +8,8 @@
 * locale (кодировка): UTF-8
 */
 
-enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4, Task_5, Task_6, Task_7, Task_8, Task_9};
-const ProgrEnum progrEnum = ProgrEnum::Task_9;
+enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4, Task_5, Task_6, Task_7, Task_8, Task_9, Task_10};
+const ProgrEnum progrEnum = ProgrEnum::Task_10;
 
 #include <iostream>
 #include "sorting.h"
@@ -20,6 +20,7 @@ const ProgrEnum progrEnum = ProgrEnum::Task_9;
 #include "task6.h"
 #include "task8.h"
 #include "task9.h"
+#include "task10.h"
 
 using namespace std;
 
@@ -339,12 +340,12 @@ int main(int argc, char* argv[])
 #if 1
     constexpr int ssize_func(3);
     EnumFuncLog enum_allfunc = (EnumFuncLog::fEnd);//fEnd=9
-//    void* arr_func[3]={&LogAND, &LogOR, &LogXOR};//хотелось бы так, но по-моему не стоит
+//    void* arr_func[3]={&LogAND, &LogOR, &LogXOR};//хотелось что-нибудь такое, но по-моему не стоит
     std::function<bool(bool&,bool&)> arr_func[ssize_func] = {&LogAND, &LogOR, &LogXOR};//массив функций
 
     std::function<bool(bool&,bool&)> operation;
 //    cout << "size is " << sizeof(arr_func) << endl;
-//    if(sizeof(arr_func) / sizeof(operation) == ssize_func){//так помоему не умеет
+//    if(sizeof(arr_func) / sizeof(operation) == ssize_func){//так помоему не умеет и после нескольких попыток система и qt сдались
       for(unsigned int i = 0; i < (unsigned int)enum_allfunc; ++i){
 //        std::function<bool(bool&,bool&)> operation;
         if(i == (unsigned int)EnumFuncLog::fAnd){
@@ -367,6 +368,19 @@ int main(int argc, char* argv[])
 //        cout << "Целостность массива нарушена!\n";
 //    }
 #endif
+
+    }else if constexpr (progrEnum == ProgrEnum::Task_10){
+      cout << "Задание 10.\n";
+
+      //[0][1]...[11] --> [1][0]...[11][10]
+      char arr_data[ssize_arr]{1,2,3,4,5,6,7,8,9,10,11,12};
+//      char* ptr_arr = nullptr;
+//      ptr_arr = arr_data;
+      ChangeArray(arr_data, ssize_arr);
+      for(auto el : arr_data)
+        cout << (int)el << " ";
+      cout << endl;
+
 
     }
     else {

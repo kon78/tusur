@@ -14,6 +14,7 @@ SOURCES += main.cpp \
   fact.cpp \
   fib.cpp \
   sorting.cpp \
+  task10.cpp \
   task4c.cpp \
   task5.cpp \
   task6.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
   fact.h \
   fib.h \
   sorting.h \
+  task10.h \
   task4c.h \
   task5.h \
   task6.h \
