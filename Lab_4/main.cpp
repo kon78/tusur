@@ -1,4 +1,5 @@
 //TODO Задание 6,7,9 - уточнить решение
+//TODO Задание 10 - границы массива(указателей) как определить адрес последнего элемента
 /*
 * Лабораторная работа No4
 * “Исследование массивов, указателей, ссылок.”
@@ -320,14 +321,9 @@ int main(int argc, char* argv[])
       Phase(ref_arr);
     }else if constexpr (progrEnum == ProgrEnum::Task_9){
       cout << "Задание 9.\n";
-//      bool bAnswer;//ответ для лог.функций
       bool op1 = false; bool op2 = true;
       bool& ref_op1 = op1;
       bool& ref_op2 = op2;
-
-
-//      cout << operation(ref_op1,ref_op2) << endl;
-//          cout << BaseFunction(operation(ref_op1,ref_op2)) << endl;
 #if 0
       EnumFuncLog enum_allfunc = (EnumFuncLog::fAnd);
         if(enum_allfunc == EnumFuncLog::fAnd){
@@ -340,19 +336,14 @@ int main(int argc, char* argv[])
 #if 1
     constexpr int ssize_func(3);
     EnumFuncLog enum_allfunc = (EnumFuncLog::fEnd);//fEnd=9
-//    void* arr_func[3]={&LogAND, &LogOR, &LogXOR};//хотелось что-нибудь такое, но по-моему не стоит
     std::function<bool(bool&,bool&)> arr_func[ssize_func] = {&LogAND, &LogOR, &LogXOR};//массив функций
 
     std::function<bool(bool&,bool&)> operation;
-//    cout << "size is " << sizeof(arr_func) << endl;
-//    if(sizeof(arr_func) / sizeof(operation) == ssize_func){//так помоему не умеет и после нескольких попыток система и qt сдались
       for(unsigned int i = 0; i < (unsigned int)enum_allfunc; ++i){
 //        std::function<bool(bool&,bool&)> operation;
         if(i == (unsigned int)EnumFuncLog::fAnd){
           operation = arr_func[(unsigned int)EnumFuncLog::fAnd];
           cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,operation,&LogAND) << endl;
-          //        cout << "операнды " << ref_op1 << " " << ref_op2 << " результат "
-          //             << BaseFunction(ref_op1,ref_op2,operation, &arr_func[0] );
         }else if(i == (unsigned int)EnumFuncLog::fOr){
           operation = arr_func[(unsigned int)EnumFuncLog::fOr];
           cout << "операнды " << ref_op1 << " " << ref_op2 << " результат " << BaseFunction(ref_op1,ref_op2,operation,&LogOR) << endl;
@@ -363,29 +354,19 @@ int main(int argc, char* argv[])
           cout << "нет такой операции\n";
         }
       }
-
-//      }else{
-//        cout << "Целостность массива нарушена!\n";
-//    }
 #endif
 
     }else if constexpr (progrEnum == ProgrEnum::Task_10){
       cout << "Задание 10.\n";
-
-      //[0][1]...[11] --> [1][0]...[11][10]
       char arr_data[ssize_arr]{1,2,3,4,5,6,7,8,9,10,11,12};
-//      char* ptr_arr = nullptr;
-//      ptr_arr = arr_data;
       ChangeArray(arr_data, ssize_arr);
       for(auto el : arr_data)
         cout << (int)el << " ";
       cout << endl;
-
-
     }
     else {
-        // ...
-//      exit(0);
+      cout << "Нет задачи!\n";
+      exit(0);
     }
 
     return 0;
