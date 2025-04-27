@@ -26,3 +26,6 @@ Lab_2/Makefile.Release
 Lab_2/build/
 Lab_2/debug/
 Lab_4/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/
+build-Lab_4-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/
+build-Lab_4-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/
+
