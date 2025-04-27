@@ -1,5 +1,3 @@
-//TODO Задание 6,7,9 - уточнить решение
-//TODO Задание 10 - границы массива(указателей) как определить адрес последнего элемента
 /*
 * Лабораторная работа No4
 * “Исследование массивов, указателей, ссылок.”
@@ -10,7 +8,7 @@
 */
 
 enum class ProgrEnum {Task_1, Task_2, Task_3, Task_4, Task_5, Task_6, Task_7, Task_8, Task_9, Task_10};
-const ProgrEnum progrEnum = ProgrEnum::Task_10;
+const ProgrEnum progrEnum = ProgrEnum::Task_6;
 
 #include <iostream>
 #include "sorting.h"
@@ -275,8 +273,9 @@ int main(int argc, char* argv[])
 
     }else if constexpr (progrEnum == ProgrEnum::Task_6){
       int m; double fx; char cht;
+      void* arr_val[elem_val]={nullptr};
       cout << "Задание 6.\n";
-      cout << "Введите 3 числа(символа)\n";
+      cout << "Введите 2 числа и символ.\n";
       cout << "Целое ";
       cin >> m;
       if(cin.fail()){
@@ -293,6 +292,9 @@ int main(int argc, char* argv[])
 
       cout << "Символ ";
       cin >> cht;
+
+//      arr_val[0]=&m; arr_val[1]=&fx; arr_val[2]=&cht;
+//      PrintValueAddr(arr_val);
 
      cout << "Были введены " << m << " " << fx << " " << cht << '\n';
 

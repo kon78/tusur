@@ -28,3 +28,25 @@ void PrintValAddr(void* addr,int vsize){
   }
 
 }
+
+#if 0
+void PrintValueAddr(void*(&arr_val)[elem_val]){
+  int* dat_int = nullptr;
+  char* dat_char = nullptr;
+  double* dat_double = nullptr;
+  for(unsigned int i = 0; i < sizeof(arr_val)/sizeof(void*); ++i){
+    if(*typeid(arr_val[i]).name() == 'i'){
+      dat_int = (int*)(arr_val[i]);//& --> int*
+      std::cout << "m=" << *dat_int << arr_val[i] << std::endl;
+    }else if(*typeid(arr_val[i]).name() == 'c'){
+      dat_char = (char*)(arr_val[i]);
+      std::cout << "cht=" << *dat_char << arr_val[i] << std::endl;
+    }else if(*typeid(arr_val[i]).name() == 'd'){
+      dat_double = (double*)(arr_val[i]);
+      std::cout << "fx=" << *dat_double << arr_val[i] << std::endl;
+    }else{
+      std::cout << "No matches\n";
+    }
+  }
+}
+#endif
