@@ -154,9 +154,24 @@ std::cout << "pi=" << pv_1 << std::endl;
 >исправленный код
 
 ```cpp
+#include <iostream>
+int main() {
+char cvalue;
+int ivalue{8};//для удобства
+short* ps=nullptr;//не стоит оставлять неинициализированным
+char *pc=nullptr;
+void *pv {(int*)(&ivalue)};//приводим адрес ячейки ivalue к int*
+void *pv_1 {(char*)(&cvalue)};
+//void* к int* pv 
+std::cout << "pv->int " << static_cast<int*>(pv) << " " << (int*)(&pv) << std::endl;
+int *pi = {(int*)(&ivalue)};
+std::cout << "pi=" << *pi << std::endl;
+}
 ```
 
 ```bash
+pv->int 0x7fff6c10cd28 0x7fff6c10cd20
+pi=8
 ```
 
 > [!WARNING]
