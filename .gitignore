@@ -16,6 +16,12 @@ Lab_3/
 =======
 >>>>>>> lab3
 Lab_3/Lab_3.pro.user
+<<<<<<< HEAD
+=======
+Lab_4/build/
+Lab_4/Lab_4.pro.user
+Lab_4/Lab_4.pro.user.4.8-pre1
+>>>>>>> lab4
 build-Lab_4-Desktop_Qt_5_7_1_MinGW_32bit-Debug/
 Lab_2/.qmake.stash
 Lab_2/Lab_2.pro.user.22
@@ -25,6 +31,12 @@ Lab_2/Makefile.Debug
 Lab_2/Makefile.Release
 Lab_2/build/
 Lab_2/debug/
+<<<<<<< HEAD
 Lab_4/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/
 build-Lab_4-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/
 build-Lab_4-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/
+=======
+build-Lab_4-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/
+build-Lab_4-Desktop_Qt_5_14_2_MinGW_64_bit-Debug/
+Lab_4/task5.cpp.autosave
+>>>>>>> lab4

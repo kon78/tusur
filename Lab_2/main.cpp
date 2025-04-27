@@ -238,6 +238,7 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 #endif
 
 //Задание 2. Вывод основных размеров типов даных С++.
+  cout << "русский текст в консоли.\n";
 #if defined TASK_2
   enum{BYTE_SIZE=8};
 //type:____bytes
@@ -248,7 +249,9 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
   cout << "double  : " << sizeof(double) << " bytes" << endl;
   cout << "float   : " << sizeof(float) << " bytes" << endl;
   cout << "long    : " << sizeof(long) << " bytes" << endl;
-  cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой
+  cout << "void    : " << sizeof(void*) << " bytes" << endl;//особый тип, пустой
+  //С2070: 'void': illegal sizeof operand
+//   cout << "void    : " << sizeof(void) << " bytes" << endl;//особый тип, пустой
   cout << '\n';
 
   //модификатор unsigned/signed; short/long/long long
