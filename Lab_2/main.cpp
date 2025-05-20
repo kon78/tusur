@@ -8,7 +8,7 @@
 */
 
 //выполняемя задача TASK_1,2,3...11
-#define TASK_2
+#define TASK_11
 //подключаем библиотеки
 //для калькулятора
 #include <string>
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <bitset>//для вывода в бинарной форме
 #include <math.h>
+#include <cctype>
 
 #if defined TASK_6
 #define func (cout << "hello\n");
@@ -42,7 +43,7 @@
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main(void)
 {
 //Задание 1.“Калькулятор для расчета идеального веса“.
 #if defined TASK_1
@@ -81,65 +82,71 @@ int main(int argc, char *argv[])
     } }while(0)
 
 enum{indMass16=16,indMass25=25,indMass30=30,indMass35=35,indMass40=40};
-//const float indMass18_5=18.5;
+
 #define answerIndMass(index) \
   do { \
-  const float indexNorm1 = 18.5; \
-  const float indexNorm2 = 25; \
+  const float indexNorm1 = 18.5f; \
+  const float indexNorm2 = 25.0f; \
   cout << "Вариант расчета индекс массы тела " << (index) << "\n"; \
-  if((index) < indMass16){ \
+  if((index) < static_cast<float>(indMass16)){ \
     cout << "\nВыраженный дифицит массы тела."; \
-  }else if(((index) > indMass16) && ((index) < indexNorm1)){ \
+  }else if(((index) > static_cast<float>(indMass16)) && ((index) < static_cast<float>(indexNorm1))){ \
     cout << "\nНедостаточная (дефицит) масса тела."; \
   }else if(((index) > indexNorm1) && ((index) < indexNorm2)){ \
     cout << "\nНорма."; \
-  }else if(((index) > indexNorm2) && ((index) < indMass30)){ \
+  }else if(((index) > indexNorm2) && ((index) < static_cast<float>(indMass30))){ \
     cout << "\nИзбыточная масса тела (предожирение)."; \
-  }else if(((index) > indMass30) && ((index) < indMass35)){ \
+  }else if(((index) > static_cast<float>(indMass30)) && ((index) < static_cast<float>(indMass35))){ \
     cout << "\nОжирение первой степени"; \
-  }else if(((index) > indMass35) && ((index) < indMass40)){ \
+  }else if(((index) > static_cast<float>(indMass35)) && ((index) < static_cast<float>(indMass40))){ \
     cout << "\nОжирение второй степени"; \
-  }else if((index) > indMass40){ \
+  }else if((index) > static_cast<float>(indMass40)){ \
     cout << "\nОжирение третьей степени (морбидное)"; \
   } \
 cout << "\nВариант расчета " << "по индексу массы тела (индекс массы тела " << (index) \
      << ") вес " << (patMass) << " килограмм.\n"; \
 normMass1 = (indexNorm1 * ((indPatHigh) * (indPatHigh))); \
 normMass2 = (indexNorm2 * ((indPatHigh) * (indPatHigh))); \
-if((index) < 18.5){ \
+if((index) < 18.5f){ \
   cout << "Вес необходимо набрать на " << ((normMass1) - (patMass)) << " килограмм.\n"; \
-}else if((index) > 25){ \
+}else if((index) > 25.0f){ \
   cout << "Вес необходимо сбросить на " << ((patMass) - (normMass2)) << " килограмм.\n"; \
 }else{ \
   cout << "Вес пациента в пределах нормы!\n"; \
 } \
   }while(0)
 
+#if 1
 enum{patYr19=19,patYr24=24,patYr25=25,patYr34=34,patYr35=35,patYr44=44,patYr45=45,patYr54=54,patYr55=55};
-const float indYr21_4=21.4,indYr19_5=19.5,//коэффициенты в зависимости от возраста и пола пациента
-            indYr21_6=21.6,indYr23_2=23.2,
-            indYr22_9=22.9, indYr23_4=23.4,
-            indYr25_8=25.8, indYr25_2=25.2,
-            indYr26_6=26.6, indYr27_3=27.3;
+#endif
+
+const float indYr21_4=21.4f,indYr19_5=19.5f,//коэффициенты в зависимости от возраста и пола пациента
+            indYr21_6=21.6f,indYr23_2=23.2f,
+            indYr22_9=22.9f, indYr23_4=23.4f,
+            indYr25_8=25.8f, indYr25_2=25.2f,
+            indYr26_6=26.6f, indYr27_3=27.3f;
 #define selYears(patSex,patOldYears) \
   do { \
   cout << "Возраст " << (patOldYears)  << " лет " << ((patSex)?" Мужчина ":" Женщина "); \
-  if(((patOldYears) >= patYr19) && ((patOldYears) <= patYr24)){ \
+  if(((patOldYears) >= static_cast<float>(patYr19)) && ((patOldYears) <= static_cast<float>(patYr24))){ \
       ((patSex)?indexOldYears = indYr21_4:indexOldYears = indYr19_5); \
-    }else if(patOldYears >= patYr25 && patOldYears <= patYr34){ \
+    }else if(patOldYears >= static_cast<float>(patYr25) && patOldYears <= static_cast<float>(patYr34)){ \
       ((patSex)?indexOldYears = indYr21_6:indexOldYears = indYr23_2); \
-    }else if(patOldYears >=patYr35 && patOldYears <=patYr44){ \
+    }else if(patOldYears >=static_cast<float>(patYr35) && patOldYears <=static_cast<float>(patYr44)){ \
       ((patSex)?indexOldYears = indYr22_9:indexOldYears = indYr23_4); \
-    }else if(patOldYears >=patYr45 && patOldYears <=patYr54){ \
+    }else if(patOldYears >=static_cast<float>(patYr45) && patOldYears <=static_cast<float>(patYr54)){ \
       ((patSex)?indexOldYears = indYr25_8:indexOldYears = indYr25_2); \
-    }else if(patOldYears > patYr55){ \
+    }else if(patOldYears > static_cast<float>(patYr55)){ \
       ((patSex)?indexOldYears = indYr26_6:indexOldYears = indYr27_3); \
     } \
+     else { \
+        indexOldYears = 0.0f; \
+}\
   }while(0)
 
 #define answerIndMassOldYear(indexOldYears) \
   do { \
-  indPatHigh = ((float)(patHigh) / HighConst); \
+  indPatHigh = (static_cast<float>(patHigh) / HighConst); \
     normMass1 = (indexOldYears * ((indPatHigh) * (indPatHigh))); \
   } \
   while(0)
@@ -168,7 +175,7 @@ enum{patYearsMin=19,patYearsMax=100,patMassMin=45,patMassMax=125,patHighMin=140,
      (patMass < patMassMin || patMass > patMassMax) || //от 45 до 125 килограмм - норма
      (patHigh < patHighMin || patHigh > patHighMax) //от 140 до 215 сантиметров - норма
      ){
-//    errPatData = true;
+
     cout << "Были введены неверные данные:\n";
     if(patOldYears <= patYearsMin || patOldYears > patYearsMax)
       cout << "Неверный возраст пациента -->" << patOldYears << endl;
@@ -187,7 +194,7 @@ enum{patYearsMin=19,patYearsMax=100,patMassMin=45,patMassMax=125,patHighMin=140,
    * женщины вес = (рост см - 100) * 0.85
   */
 //enum{coefMaleBrok=0.9,coefFemaleBrok=0.89};
-const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
+const float coefMaleBrok=0.9f, coefFemaleBrok=0.89f;
 //расчеты общий расчет по имеющимся данным
 
   cout.setf(ios::fixed);cout.precision(1);//точность до 1 знаков после запятой
@@ -195,7 +202,7 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
   if(algProg == 'a'){
     ((patSex)?brokCoef = coefMaleBrok:brokCoef = coefFemaleBrok);//male female
     //расчет по формуле Брока
-    patMassAlg = patMassBroke();
+    patMassAlg = static_cast<int>patMassBroke();
     answer();
     answerBroke(patMassAlg,patMass);//ответ на экран
 
@@ -206,8 +213,8 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
      * вес,кг = индекс * рост,м2
     */
     if(patHigh != 0){//проверка на 0, на всякий случай
-      indPatHigh = (float)patHigh / HighConst;//перевод в метры
-      index = (float)patMass / (indPatHigh * indPatHigh);
+        indPatHigh = static_cast<float>(patHigh) / HighConst;//перевод в метры
+        index = static_cast<float>(patMass) / (indPatHigh * indPatHigh);
       answer();
       answerIndMass(index);//ответ на экран
     }else{
@@ -277,28 +284,40 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 
   //0-false 1..255-true
   bool lYes{true}, lNo{false};
-  cout.setf(ios::boolalpha);
+  cout.setf(ios::boolalpha);//true false
   cout << "<BOOL> logical от " << lYes << " до " << lNo << endl;
-  printf("<BOOL> decimal/hexadecimal от %X до %X\n",lYes,lNo);
-  cout << "<BOOL> binary от " << (int)lYes << " до " << (int)lNo << endl;
+//  printf("<BOOL> decimal/hexadecimal от %X до %X\n",lYes,lNo);
+  /*cout.setf(ios::flag)*/ /*cout.unsetf(ios::flag)*/
+  cout.unsetf(ios::dec);//снять флаг dec
+  cout << "<BOOL> decimal/hexadecimal от " << hex << lYes << " до " << lNo << "\n";
+  cout << "<BOOL> binary от " << static_cast<int>(lYes) << " до " << static_cast<int>(lNo) << endl;
   cout << "\n";
 
   //встроенные константы для типов -128 до 127
   char cMin{CHAR_MIN};
   char cMax{CHAR_MAX};
-  cout << "<CHAR> decimal от " << (int)cMin << " до " << (int)cMax << endl;
-  printf("<CHAR> hexadecimal от %X до %X\n",cMin,cMax);//FFFFFF80-cMin 7F-cMax
+  cout.setf(ios::dec);//поставить флаг dec
+  cout << "<CHAR> decimal от " << static_cast<int>(cMin) << " до " << static_cast<int>(cMax) << endl;
+  cout << "<CHAR> decimal от " << static_cast<int>(cMin) << " до " << static_cast<int>(cMax) << endl;
+  cout.unsetf(ios::dec);//снять флаг dec
+  cout << "<CHAR> hexadecimal от " << hex << static_cast<int>(cMin) << " до " << static_cast<int>(cMax) << "\n";
+//  printf("<CHAR> hexadecimal от %X до %X\n",cMin,cMax);//FFFFFF80-cMin 7F-cMax
+
   //указываем размер шаблона 8 бит и указываем число для создаваемого объекта
-  bitset<sizeof(char)*BYTE_SIZE> bCharMin((int)cMin);
-  bitset<sizeof(char)*BYTE_SIZE> bCharMax((int)cMax);
+  bitset<sizeof(char)*BYTE_SIZE> bCharMin(static_cast<unsigned int>(cMin));
+  bitset<sizeof(char)*BYTE_SIZE> bCharMax(static_cast<unsigned int>(cMax));
+  cout.setf(ios::dec);//поставить флаг dec
   cout << "<CHAR> binary от " << bCharMin << " до " << bCharMax << endl;
   cout << "\n";
 
   //встроенные константы 255
   unsigned char ucMax{UCHAR_MAX};
-  cout << "<UNSIGNED CHAR> decimal от " << 0 << " до " << (int)ucMax << endl;
-  printf("<UNSIGNED CHAR> hexadecimal от %X до %X\n",0,cMax);
-  bitset<sizeof(char)*BYTE_SIZE> uChar((int)ucMax);
+  cout << "<UNSIGNED CHAR> decimal от " << 0 << " до " << static_cast<unsigned int>(ucMax) << "\n";
+  cout.unsetf(ios::dec);//снять флаг dec
+  cout << "<UNSIGNED CHAR> hexadecimal от " << hex << 0 << " до " << static_cast<unsigned int>(cMax) << "\n";
+//  printf("<UNSIGNED CHAR> hexadecimal от %X до %X\n",0,cMax);
+  bitset<sizeof(char)*BYTE_SIZE> uChar(static_cast<unsigned int>(ucMax));
+  cout.setf(ios::dec);//поставить флаг dec
   cout << "<UNSIGNED CHAR> binary от " << 0 << " до " << uChar << endl;
   cout << "\n";
 
@@ -306,17 +325,22 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
   int iMin{SHRT_MIN};
   int iMax{SHRT_MAX};//аналогичен int
   cout << "<INT> decimal от " << iMin << " до " << iMax << endl;
-  printf("<INT> hexadecimal от %X до %X\n",iMin,iMax);//
-  bitset<sizeof(int)*BYTE_SIZE> bIntMin((int)iMin);
-  bitset<sizeof(int)*BYTE_SIZE> bIntMax((int)iMax);
+  cout.unsetf(ios::dec);//снять флаг dec
+  cout << "<INT> hexadecimal от " << hex << static_cast<unsigned int>(iMin) << " до " << static_cast<unsigned int>(iMax) << "\n";
+//  printf("<INT> hexadecimal от %X до %X\n",iMin,iMax);//
+  bitset<sizeof(int)*BYTE_SIZE> bIntMin(static_cast<unsigned int>(iMin));
+  bitset<sizeof(int)*BYTE_SIZE> bIntMax(static_cast<unsigned int>(iMax));
+  cout.setf(ios::dec);//поставить флаг dec
   cout << "<INT> binary от " << bIntMin << " до " << bIntMax << endl;
   cout << "\n";
 
   //встроенные константы unsgined long long как самое большое данное, помоему
   unsigned long long ullMax{ULLONG_MAX};//18,446,744,073,709,551,615 (0xffffffffffffffff)
   cout << "<UNSIGNED LONG LONG> decimal от " << 0 << " до " << ullMax << endl;
-  printf("<UNSIGNED LONG LONG> hexadecimal от %X до %X\n",0,ullMax);//
-  bitset<sizeof(unsigned long long)*BYTE_SIZE> bullMax((unsigned long long)ullMax);
+  cout.unsetf(ios::dec);//снять флаг dec
+  cout << "<UNSIGNED LONG LONG> hexadecimal от " << hex << 0 << " до " << static_cast<unsigned int>(ullMax) << "\n";
+//  printf("<UNSIGNED LONG LONG> hexadecimal от %X до %X\n",static_cast<unsigned int>(0),static_cast<unsigned int>(ullMax));//
+  bitset<sizeof(unsigned long long)*BYTE_SIZE> bullMax(static_cast<unsigned long long>(ullMax));
   cout << "<UNSIGNED LONG LONG> binary от " << 0 << " до " << bullMax << endl;
   cout << "\n";
 
@@ -325,7 +349,7 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
 //Задание 3. Среднее арифметическое из введенных 10 чисел.
 #if defined TASK_3
   //используемые переменные
-  float fnumbFloat;
+  float fnumbFloat(0.0f);
   float fnumbCin;
   enum{COUNT=10};
   bool errCin=false;//флаг ошибки ввода
@@ -343,10 +367,14 @@ const float coefMaleBrok=0.9, coefFemaleBrok=0.89;
       cin.clear();//очищаем буфер
   }
 
-  if(!errCin)
-   cout << "Сумма введенных чисел равна " << fnumbFloat << endl;
-  else
+  if(!errCin){
+      cout << "Сумма введенных чисел равна " << fnumbFloat << endl;
+      //неаверное операцию преобразования можно опустить, преобразуется автоматически
+      cout << "Среднее арифметическое введенных " << COUNT << " чисел равны " << static_cast<float>((fnumbFloat / COUNT)) << "\n";
+  }
+  else{
       cout << "Was Error CIN!!!";
+  }
 
 #endif
 
@@ -708,66 +736,79 @@ cout << ((bool)(bAnsLogic)?"true\n":"false\n");
 //в самом простом виде
   cout << "Программа Калькулятор.\nВыполняемые оперции + - * /\n"
        << "Пример использования: 2+2 далее необходимо ввести ввод!\n"
-       << "Останов программы <число>s пример: 0s ввод\n";
+       << "Останов программы <число>s<число> пример: 0s0 ввод\n";
 
   //используемые переменные
   string buffer;
   char operation;
   double a, b;
-  double answ;
-  bool err = true;
-  bool _calc = true;
 
-  while(_calc){//пока не будет команда s
-      cout << "Введите выражение:";
-      cin >> buffer;
-      stringstream(buffer) >> a >> operation >> b;//читаем переменные со строки
 
-      if((operation == '/' || operation == '*' || operation == '+' || operation == '-' || operation == 's')){
+  double answ{0};
+  bool err{false};
+  bool calc{true};
+
+  while(calc){//пока не будет команда s
+  while(getline(cin, buffer)){
+      stringstream ss(buffer);
+    if(ss >> a >> operation >> b){//проверяем что введено
+        //вычисления
+        if((operation == '/' || operation == '*' || operation == '+' || operation == '-' || operation == 's')){
           switch(operation){
-          case '/':{
-              if(b != 0){
-                  err = false;
-                  answ = a / b;
-              }else{
-                  cout << "error! operand b=0!" << '\n';
-                  err = true;
-              }
-              break;
-          }
-          case '*':{
-              err = false;
-              answ = a * b;
-              break;
-          }
-          case '+':{
-              err = false;
-              answ = a + b;
-              break;
-          }
-          case '-':{
-              err = false;
-              answ = a - b;
-              break;
-          }
-          case 's':{
-              err = true;
-              _calc = false;
-              cout << "Program stop!\n";
-              break;
-          }
-          default:cout << "No operation!" << '\n';
-          }//switch
-      }else{
-          cout << "Wrong expression!";
-      }
+            case '/':{
+              if(b > 0){
+                err = false;
+                answ = a / b;
+                }else{
+                   cout << "Ошибка! Оператор b=0!" << '\n';
+                   err = true;
+                }
+                if(!err)
+                    cout << a << operation << b << "=" << answ << '\n';
+                break;
+            }
+            case '*':{
+                err = false;
+                answ = a * b;
+                if(!err)
+                    cout << a << operation << b << "=" << answ << '\n';
+                break;
+            }
+            case '+':{
+                err = false;
+                answ = a + b;
+                if(!err)
+                    cout << a << operation << b << "=" << answ << '\n';
+                break;
+            }
+            case '-':{
+                err = false;
+                answ = a - b;
+                if(!err)
+                    cout << a << operation << b << "=" << answ << '\n';
+                break;
+            }
+            case 's':{
+                calc = false;
+                cout << "Стоп программа!\n";
+                break;
+            }
+            default:cout << "Нет операции!\n";
+            }
+        }else{
+            cout << "Не верное выражение!\n";
+        }
+    }else{
+        cout << "Ошибка! Повторите ввод!\n";
+        ss.clear();
+        buffer.clear();
+    }
 
-      if(!err){
-          cout << "answer: ";
-          cout << a << operation << b << '=' << answ << '\n';}
+    if(ss.eof())
+        break;
+
   }
-
+  }
 #endif
-
   return 0;
 }
