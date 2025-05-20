@@ -25,12 +25,12 @@ f = 3,2;     //<-- , в дробном числе, может и не быть (
 int main(void) { // c-вариант main
 short a;    
 a(65599);   
-int b = 4;
-int с = 4;
-char ch;
-ch{5};
-float f;
-f = 3.2;
+int b(4);
+int с(4);
+char ch{5};
+//ch{5};
+float f(3.2);
+//f = 3.2;
 }         
 ```
 
@@ -65,7 +65,7 @@ int main(void) {
 int x = 1;
 x = x++; //<-- 1        ++x; --> 2 инкремент 
 
-std::cout << x << "\n";
+std::cout << x << std::endl;
 }
 ```
 
@@ -121,7 +121,7 @@ const int option_7 = 6;
 const int option_8{7};
 
 int main(void){
-bitset<8> bits(0x02);
+bitset<8> bits(0x04);
 bits.set(option_1);
 bits.flip(option_3);
 bits.reset(option_7);
@@ -161,8 +161,8 @@ print("c: \n", );
 > исправленный код
 
 ```cpp
-//int main(void){
-//{
+int main(void){
+{
 uint8_t a(1); uint8_t b(1), c(3);
 a = a < 1; //логическая операция a<1 --> 1<1 --> a=false(0)
 printf("a:%d\n", a);
@@ -170,7 +170,7 @@ b <<= 1; //сдвиг с записью результата в b b=2
 printf("b:%d\n", b);
 c |= 1;//логическая операция | (or) с записью в результата c=3
 printf("c:%d\n", c);
-//}
+}
 ```
 
 >_Вывод на экран_
@@ -210,7 +210,7 @@ std::cout << "y: " << y << std::endl;//5hex=5dec
 int bin(0);
 bin = 0b101;
 std::cout << "bin 0b101: " << bin << std::endl;
-//}
+}
 ```
 
 >_Вывод на экран_
