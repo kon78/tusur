@@ -12,7 +12,7 @@ a(65599);    //<-- слишком большое число, -32768 до 32767
 int 5 = 4;   //<-- 5 = 4, нет имени переменной
 int л = 4;   //<-- русский символ
 char ch;
-ch{5};
+ch{5};//ошибка в одну строку
 float f;
 f = 3,2;     //<-- , в дробном числе, может и не быть (региональные стандарты)
 }}           //<-- нет парной скобки стеймена (лишняя)
@@ -22,14 +22,12 @@ f = 3,2;     //<-- , в дробном числе, может и не быть (
 >исправленный код
 
 ```cpp
-int main(void) { // c-вариант main
-short a;    
-a(65599);   
-int b(4);
-int с(4);
-char ch{5};
-//ch{5};
-float f(3.2);
+int main() { // c-вариант main
+short a(6599);//прямая инициализация в одну строку!   
+int b(4);//int b = 4;//тоже допустимо 
+int с(4);//int c = 4;
+char ch{'5'};//char ch;//можно оставить так
+float f(3.2);//float f;
 //f = 3.2;
 }         
 ```
@@ -39,9 +37,9 @@ float f(3.2);
 
 ```cpp
 #include <iostream>
-int main(void) { 
+int main() { 
 int x = 5;
-x = x -  2;
+x = x - 2;
 //a
 std::cout << x << std::endl; // #a x=3
 int y = x;
@@ -61,11 +59,11 @@ std::cout << z << std::endl; // #e z объявлена, но не инициа�
 
 ```cpp
 #include <iostream>
-int main(void) {
+int main() {
 int x = 1;
 x = x++; //<-- 1        ++x; --> 2 инкремент 
 
-std::cout << x << std::endl;
+std::cout << x << std::endl;// #x 2
 }
 ```
 
@@ -73,7 +71,7 @@ std::cout << x << std::endl;
 
 ```cpp
 #include <iostream>
-int main(void){
+int main(){
 int x = 1;
 std::cout << ++x << "\n"; //<-- 2
 }
@@ -94,7 +92,7 @@ const int option_5 = 4;
 const int option_6 = 5;
 const int option_7 = 6;
 const int option_8{7};
-int main( {
+int main( { //<-- ) парная скобка
 bitset<8> bits(0x4);
 bits.set(option_1);
 bits.flip(option_3);
@@ -110,6 +108,10 @@ cin<< "All the bits: " << bits << '\n;
 >исправленный код
 
 ```cpp
+#include<iostream>
+#include<bitset>
+using namespace std;
+
 enum{SIZE_BYTE=8};
 const int option_1 = 0;
 const int option_2 = 1;
@@ -120,8 +122,8 @@ const int option_6 = 5;
 const int option_7 = 6;
 const int option_8{7};
 
-int main(void){
-bitset<8> bits(0x04);
+int main(){
+bitset<SIZE_BYTE> bits(0x04);
 bits.set(option_1);
 bits.flip(option_3);
 bits.reset(option_7);
@@ -136,9 +138,9 @@ cout << "All the bits: " << bits << '\n';
 
 ```bash
 Bit 1 has value: 1
-Bit 3 has value: 1
+Bit 3 has value: 0
 Bit 7 has value: 0
-All the bits: 00000111
+All the bits: 00000001
 ```
 
 ### b)
@@ -161,7 +163,8 @@ print("c: \n", );
 > исправленный код
 
 ```cpp
-int main(void){
+#include<iostream>
+int main(){
 {
 uint8_t a(1); uint8_t b(1), c(3);
 a = a < 1; //логическая операция a<1 --> 1<1 --> a=false(0)
@@ -202,9 +205,11 @@ out << "bin 0b101: " << bin << std::endl
 > исправленный код
 
 ```cpp
-int main(void){
+#include<iostream>
+int main(){
 int x (0x8);
-std::cout << "x: " << x << std::endl;//8hex=8dec
+std::cout.unsetf(ios::dec);
+std::cout << "x: " << ios::hex << x << std::endl;//8hex=8dec
 int y = 0x5;
 std::cout << "y: " << y << std::endl;//5hex=5dec
 int bin(0);
