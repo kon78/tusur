@@ -22,13 +22,15 @@ f = 3,2;     //<-- , в дробном числе, может и не быть (
 >исправленный код
 
 ```cpp
-int main() { // c-вариант main
-short a(6599);//прямая инициализация в одну строку!   
-int b(4);//int b = 4;//тоже допустимо 
-int с(4);//int c = 4;
-char ch{'5'};//char ch;//можно оставить так
-float f(3.2);//float f;
-//f = 3.2;
+#include<iostream>
+int main() {
+short a(659);  
+int b = 4;
+int c = 4;
+char ch{5};
+float f;
+f = 3.2;
+return 0;
 }         
 ```
 
@@ -49,10 +51,18 @@ std::cout << y << std::endl; // #b y=3
 std::cout << x + y << std::endl; // #c 6
 //d
 std::cout << x << std::endl; // #d 3
-int z;
+int z;//неявная инициализация 
 //e
 std::cout << z << std::endl; // #e z объявлена, но не инициализирована, любое значение
 }
+```
+>Вывод на экран
+```bash
+3
+3
+6
+3
+0//переменная со статическим временем существоавания инициализируется 0
 ```
 
 ### b)
@@ -61,10 +71,14 @@ std::cout << z << std::endl; // #e z объявлена, но не инициа�
 #include <iostream>
 int main() {
 int x = 1;
-x = x++; //<-- 1        ++x; --> 2 инкремент 
+x = x++; //<-- 2 постфиксный инкремент, в x будет 1
 
-std::cout << x << std::endl;// #x 2
+std::cout << x << std::endl;// #x 1
 }
+```
+>Вывод на экран
+```bash
+1
 ```
 
 ### c)
@@ -73,8 +87,12 @@ std::cout << x << std::endl;// #x 2
 #include <iostream>
 int main(){
 int x = 1;
-std::cout << ++x << "\n"; //<-- 2
+std::cout << ++x << "\n"; //<-- префиксный инкремент, в x будет 2
 }
+```
+> Вывод на экран
+```bash
+2
 ```
 
 ### 3. Найдите в программе ошибки, можно только что-то добавлять убирать нельзя, и выведите результат.
@@ -127,15 +145,19 @@ bitset<SIZE_BYTE> bits(0x04);
 bits.set(option_1);
 bits.flip(option_3);
 bits.reset(option_7);
+
+//cin >> "Bit 1 has value: " << bits.test(option_1) << '\n';
+//cin << "Bit 3 has value: " << bits.test(option_3) << '\n';
+//cin << "Bit 7 has value: " << bits.test(option_7) << '\n';
+//cin << "All the bits: " << bits << '\n';
+
 cout << "Bit 1 has value: " << bits.test(option_1) << '\n';
 cout << "Bit 3 has value: " << bits.test(option_3) << '\n';
 cout << "Bit 7 has value: " << bits.test(option_7) << '\n';
 cout << "All the bits: " << bits << '\n';
 }
 ```
-
 >_Вывод на экран_
-
 ```bash
 Bit 1 has value: 1
 Bit 3 has value: 0
@@ -149,7 +171,7 @@ All the bits: 00000001
 > Неправильный код
 
 ```cpp
-int main()
+int main()//нет парных скобок {}
 uint8_t a(1), uint8_t b(1), c(3
 a = a < 1;
 printf("a: \n", a)
@@ -164,9 +186,9 @@ print("c: \n", );
 
 ```cpp
 #include<iostream>
+#include<cstdint>
 int main(){
-{
-uint8_t a(1); uint8_t b(1), c(3);
+std::uint8_t a(1); std::uint8_t b(1), c(3);
 a = a < 1; //логическая операция a<1 --> 1<1 --> a=false(0)
 printf("a:%d\n", a);
 b <<= 1; //сдвиг с записью результата в b b=2
@@ -175,9 +197,7 @@ c |= 1;//логическая операция | (or) с записью в ре�
 printf("c:%d\n", c);
 }
 ```
-
 >_Вывод на экран_
-
 ```bash
 a:0
 b:2
@@ -191,13 +211,13 @@ c:3
 
 ```cpp
 int main() {
-int x (08);
-std::cout << "x: " << x < endl;
+int x (08);// 0x8
+std::cout << "x: " << x < endl;//оператор std::
 int y = 0x5;
-std::cout << "y: " < y << stdendl;
+std::cout << "y: " < y << stdendl;// оператор ::
 int bin(0);
-bin = 0b101
-out << "bin 0b101: " << bin << std::endl
+bin = 0b101// окончание ;
+out << "bin 0b101: " << bin << std::endl// cout
 }
 ```
 
@@ -208,18 +228,15 @@ out << "bin 0b101: " << bin << std::endl
 #include<iostream>
 int main(){
 int x (0x8);
-std::cout.unsetf(ios::dec);
-std::cout << "x: " << ios::hex << x << std::endl;//8hex=8dec
+std::cout << "x: " << x << std::endl;//8hex=8dec
 int y = 0x5;
 std::cout << "y: " << y << std::endl;//5hex=5dec
 int bin(0);
-bin = 0b101;
+bin = 0b101;//0b101 = 5dec
 std::cout << "bin 0b101: " << bin << std::endl;
 }
 ```
-
 >_Вывод на экран_
-
 ```bash
 x: 8
 y: 5
@@ -231,11 +248,10 @@ bin 0b101: 5
 > [!WARNING]
 > Неправильный код
 
-
 ```cpp
 int main() {
 int x{8};
-std::cout << "hex: " << h << x << ndl;
+std::cout << "hex: " << h << x << ndl;//std::endl hex
 std::cout << "oct: " << o<< x << std::endl;
 out << "dec: " << dec << x << std::endl;
 }
@@ -245,12 +261,13 @@ out << "dec: " << dec << x << std::endl;
 > исправленный код
 
 ```cpp
-int main(void){
-const unsigned int x{8};
-cout.unsetf(ios::dec);
-std::cout << "hex: " << hex << x << std::endl;
-std::cout << "oct: " << oct << x << std::endl;
-std::cout << "dec: " << dec << x << std::endl;
+#include<iostream>
+int main(){
+int x{8};
+std::cout.unsetf(std::ios::dec);//снимаем флаг dec
+std::cout << "hex: " << std::hex << x << std::endl;//8dec=8hex
+std::cout << "oct: " << std::oct << x << std::endl;//8dec=10oct
+std::cout << "dec: " << std::dec << x << std::endl;//8dec
 }
 ```
 
@@ -259,7 +276,7 @@ std::cout << "dec: " << dec << x << std::endl;
 ```bash
 hex: 8
 oct: 10
-dec: 10
+dec: 8
 ```
 
 ### 4 Вычислите следующие выражения:
