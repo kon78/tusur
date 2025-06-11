@@ -23,7 +23,7 @@ const ProgrEnum progrEnum = ProgrEnum::Task_6;
 
 using namespace std;
 
-int main(int argc, char* argv[])
+int main()
 {
     if constexpr (progrEnum== ProgrEnum::Task_1) {
         cout << "Задание 1.\n";
