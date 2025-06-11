@@ -1,6 +1,7 @@
 //TODO: snake_case названия переменных
 //TODO: сочетания и перестановки - https://qna.habr.com/q/571320
 //TODO: проверка деление на 0 в задачах 1.
+//TODO: убрать из первого задания void My_Swap(const std::string& word);
 /*
 * Лабораторная работа No3
 * Исследование функций С++ в IDE (интегрированной среде разработки) Qt Creator
@@ -24,7 +25,7 @@
 
 #if Unit == 3
 #include "task3.h"
-static int param;//глобальная переменная param=0
+static int iValue(10);//глобальная переменная
 #endif
 
 #if Unit == 4
@@ -44,58 +45,47 @@ static int param;//глобальная переменная param=0
 #endif
 
 using namespace std;
-int main(int argc, char *argv[])
+int main()
 {
 #if Unit == 1
-//  double probability_cards; //ответ
-cout << "Задание 1.а" << endl;
-// Вызов функции задания 1 из отдельного файла (*.h ) или модуля (*.срр + *.h)
-if(max_cards != 0){
-  cout << "Вероятность вынуть из колоды (" << max_cards << " карты) туза (без масти) будет равна "
-       << (int)GameCards() << "%\n";
-}else{
-  cout << "Error! Деление на 0!\n";
-  exit(progr_err);
-}
+    Propability();//1.а 1.б 1.в
 
-cout << "Задание 1.б" << endl;
-cout << "Вероятность выпадения " << bones_wine << " очков " << " будет равна "
-     << (int)CuteBones() << "%\n";
-
-cout << "Задание 1.в" << endl;
-cout << "Вероятность составить слово МАМА из четырех букв М А М А будет равна "
-     << (int)PermutationWords() << "%\n";
 #elif Unit == 2
 std::cout << "Задание 2" << std::endl;
 // Вызов функции задания 2 из отдельного файла (*.h ) или модуля (*.срр + *.h)
 
-//Если я правильно понял, в данном случае функция void PrintChar(...) можно обьявить либо в определении \
-функции void PrintChar(int a = 'a',char b = 'b',char c = 'c', char d = 'd') в файле main.cpp \
-либо объявить в файле task2.h\
+/*Если я правильно понял, в данном случае функция void PrintChar(...) можно обьявить либо в определении
+функции void PrintChar(int a = 'a',char b = 'b',char c = 'c', char d = 'd') в файле main.cpp
+либо объявить в файле task2.h */
 
 //вариант без аргументов, все аргументы объявлены в заголовочном файле
-  PrintChar();//объявления в заголовочном файле, на экране будет a=97 b=b c=c d=d
+  PrintChar();//объявления в заголовочном файле, на экране будет a=97 b=b c=c d=d, то есть значения по умолчанию
 
 //вариант с аргументами
   PrintChar(0,0,0,0);//на экране будет a=0 b= c= d=
 
+  PrintChar(10,'a','b','c');//на экране будет a=10 b=a c=b d=c
+
+  PrintChar(11,'d','e');//на экране будет a=10 b=f c=c d=d
+
+  PrintChar(12,'f');//на экране будет a=10 b=f c=c d=d
+
+  PrintChar(13);//на экране будет a=13 b=b c=c d=d
+
   PrintChar(0);//на экране будет a=0 b=b c=c d=d
 
-  PrintChar(10,'f');//на экране будет a=10 b=f c=c d=d
+//  PrintChar(/*(int)nullptr*/0);//на экране будет a=0 b=b c=c d=d :) error
 
-  PrintChar((int)nullptr);//на экране будет a=0 b=b c=c d=d :)
 
 #elif Unit == 3
 std::cout << "Задание 3" << std::endl;
 
 cout << "global variable ";
-PRINT_INT(param);
-cout << '\n';
-param = Initialization();//возращаемое значение из функции, переопределяется
-cout << "returned variable ";
-PRINT_INT(param);
-cout << '\n';
-// Вызов функции задания 3 из отдельного файла (*.h ) или модуля (*.срр + *.h)
+cout << "iValue =" << iValue << '\n';
+
+iValue = Initialization();//возращаемое значение из функции
+cout << "local variable ";
+cout << "iValue =" << iValue << '\n';
 
 #elif Unit == 4
   for (int i = 0; i < 10; ++i){
@@ -139,8 +129,8 @@ Task6();
   Elevator();
 #else
 
-// Вызов функции задания 4 из отдельного файла (*.h ) или модуля (*.срр + *.h)
-//...
+    cout << "Нет такого задания!\n";
+
 #endif
   return 0;
   }
