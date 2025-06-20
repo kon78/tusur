@@ -50,7 +50,7 @@ int return() {
 return 5;
 int return()
 {
-int k ;
+int k = 3 ;
 k{3};
 return k;
 }
@@ -70,14 +70,14 @@ int return1(){
 return 5;
 }
 
-int return2(int n){
-int k{n} ;
+int return2(){
+int k = 3 ;
 return k;
 }
 
 int main(){
 std::cout << return1() << std::endl;
-std::cout << return2(4) << std::endl;
+std::cout << return2() << std::endl;
 
 return 0;
 }
@@ -85,7 +85,7 @@ return 0;
 
 ```bash
 5
-4
+3
 ```
 
 > [!WARNING]
@@ -285,7 +285,7 @@ enum class Colors {
 RED,
 BLACK
 };
-};
+}
 
 using namespace Mix;
 
@@ -356,6 +356,7 @@ auto main()->int
 {
 std::cout << add(5, 4) << '\n';
 
+//std::cout << std::subtract(5, 4) << '\n';//если убрать запись using namespace DoMath;
 std::cout << subtract(5, 4) << '\n';
 return 0;
 }
